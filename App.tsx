@@ -1,17 +1,28 @@
-
-import React from 'react';
+import React, { useState } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Services from './components/Services';
 import Booking from './components/Booking';
 import Footer from './components/Footer';
+import Questionnaire from './components/Questionnaire';
 
 function App() {
+  const [currentView, setCurrentView] = useState<'home' | 'questionnaire'>('home');
+
+  const handleStartConsultation = () => {
+    setCurrentView('questionnaire');
+    window.scrollTo(0, 0);
+  };
+
+  if (currentView === 'questionnaire') {
+    return <Questionnaire onBack={() => setCurrentView('home')} />;
+  }
+
   return (
     <div className="min-h-screen w-full bg-white selection:bg-brand-primary selection:text-white">
-      <Header />
+      <Header onStartConsultation={handleStartConsultation} />
       <main>
-        <Hero />
+        <Hero onStartConsultation={handleStartConsultation} />
         
         {/* About Section - Redesigned */}
         <section id="about" className="py-24 bg-white">
@@ -87,7 +98,7 @@ function App() {
            </div>
         </section>
         
-        <Booking />
+        <Booking onStartConsultation={handleStartConsultation} />
       </main>
       <Footer />
     </div>

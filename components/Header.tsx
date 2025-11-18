@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ArrowRight } from 'lucide-react';
 
-const Header: React.FC = () => {
+interface HeaderProps {
+  onStartConsultation: () => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ onStartConsultation }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -88,17 +92,17 @@ const Header: React.FC = () => {
               </a>
             ))}
           </div>
-          <a 
-            href="#contact"
-            onClick={(e) => scrollToSection(e, '#contact')}
-            className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 border ${
+          <button 
+            onClick={onStartConsultation}
+            className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 border flex items-center gap-2 ${
               isScrolled 
                 ? 'bg-brand-primary border-brand-primary text-white hover:bg-brand-secondary' 
                 : 'bg-white text-brand-primary border-white hover:bg-brand-accent hover:border-brand-accent'
             }`}
           >
-            Agendar Reunión
-          </a>
+            Agendar Primera Sesión
+            <ArrowRight size={14} />
+          </button>
         </nav>
 
         {/* Mobile Menu Toggle */}
@@ -125,13 +129,16 @@ const Header: React.FC = () => {
               {link.name}
             </a>
           ))}
-          <a 
-            href="#contact"
-            onClick={(e) => scrollToSection(e, '#contact')}
-            className="mt-4 bg-brand-primary text-white text-center py-3 rounded-lg font-medium hover:bg-brand-secondary"
+          <button 
+            onClick={() => {
+              onStartConsultation();
+              setIsMobileMenuOpen(false);
+            }}
+            className="mt-4 bg-brand-primary text-white text-center py-3 rounded-lg font-medium hover:bg-brand-secondary w-full flex items-center justify-center gap-2"
           >
-            Agendar Consultoría
-          </a>
+            Agendar Primera Sesión
+            <ArrowRight size={16} />
+          </button>
         </div>
       </div>
     </header>

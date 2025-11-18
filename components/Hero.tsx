@@ -1,7 +1,11 @@
 import React from 'react';
 import { ArrowDown, ChevronRight } from 'lucide-react';
 
-const Hero: React.FC = () => {
+interface HeroProps {
+  onStartConsultation: () => void;
+}
+
+const Hero: React.FC<HeroProps> = ({ onStartConsultation }) => {
   const handleNavigation = (e: React.MouseEvent, targetId: string) => {
     e.preventDefault();
     const element = document.getElementById(targetId);
@@ -19,7 +23,7 @@ const Hero: React.FC = () => {
       <div 
         className="absolute inset-0 z-0 bg-cover bg-center bg-fixed transform scale-105 opacity-50 mix-blend-overlay"
         style={{ 
-          backgroundImage: 'url("https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=2070&auto=format&fit=crop")',
+          backgroundImage: 'url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop")',
         }}
       ></div>
       <div className="absolute inset-0 bg-gradient-to-b from-brand-primary/70 via-brand-primary/30 to-brand-primary"></div>
@@ -44,11 +48,11 @@ const Hero: React.FC = () => {
           
           <div className="flex flex-col md:flex-row gap-5 justify-center items-center animate-[fadeInUp_1s_ease-out_0.8s_both]">
             <button 
-              onClick={(e) => handleNavigation(e, 'contact')}
+              onClick={onStartConsultation}
               className="group relative px-8 py-4 bg-white text-brand-primary rounded-full font-semibold text-sm tracking-wide overflow-hidden transition-all hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:scale-105 cursor-pointer"
             >
               <span className="relative z-10 flex items-center gap-2">
-                Iniciar Consultoría
+                Agendar Primera Sesión
                 <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </span>
             </button>

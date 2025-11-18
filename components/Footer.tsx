@@ -39,11 +39,11 @@ const Footer: React.FC = () => {
             <ul className="space-y-4 text-sm">
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="text-brand-accent mt-0.5 flex-shrink-0" />
-                <span>Av. El Golf 40, Las Condes<br/>Santiago, Chile</span>
+                <span>Luis Pasteur 5280<br/>Santiago, Chile</span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={18} className="text-brand-accent flex-shrink-0" />
-                <a href="mailto:contacto@baumann.co" className="hover:text-white transition-colors">contacto@baumann.co</a>
+                <a href="mailto:contacto@baumann-co.com" className="hover:text-white transition-colors">contacto@baumann-co.com</a>
               </li>
             </ul>
           </div>
