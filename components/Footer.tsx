@@ -1,5 +1,5 @@
 import React from 'react';
-import { Linkedin, Twitter, Mail, MapPin } from 'lucide-react';
+import { Mail, MapPin } from 'lucide-react';
 
 const Footer: React.FC = () => {
   const scrollToContact = (e: React.MouseEvent) => {
@@ -28,10 +28,6 @@ const Footer: React.FC = () => {
             <p className="max-w-md mb-6 text-sm leading-relaxed">
               Consultoría estratégica de alto nivel para empresas que buscan redefinir su futuro. Excelencia, integridad e innovación en cada paso.
             </p>
-            <div className="flex gap-4">
-              <a href="#contact" onClick={scrollToContact} className="text-white hover:text-brand-accent transition-colors"><Linkedin size={20} /></a>
-              <a href="#contact" onClick={scrollToContact} className="text-white hover:text-brand-accent transition-colors"><Twitter size={20} /></a>
-            </div>
           </div>
           
           <div>

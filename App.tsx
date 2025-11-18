@@ -39,22 +39,22 @@ function App() {
                   className="relative z-10 rounded-2xl shadow-2xl grayscale hover:grayscale-0 transition-all duration-700 ease-in-out w-full object-cover aspect-[4/3]"
                  />
                  <div className="absolute -bottom-6 -right-6 bg-white p-6 rounded-xl shadow-xl z-20 max-w-xs hidden md:block border border-brand-accent/20">
-                    <p className="font-serif text-2xl text-brand-primary mb-1">20+</p>
-                    <p className="text-xs text-brand-grey uppercase tracking-wider">Años definiendo estándares</p>
+                    <p className="font-serif text-xl text-brand-primary mb-1">Santiago, Chile</p>
+                    <p className="text-xs text-brand-grey uppercase tracking-wider">Atendemos a todo LatAm</p>
                  </div>
                </div>
 
                <div className="lg:w-1/2">
                  <span className="text-brand-primary font-bold tracking-widest uppercase text-xs mb-4 block opacity-80">Sobre Nosotros</span>
                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-medium text-brand-primary mb-8 leading-tight">
-                   Claridad en tiempos de <br/><span className="italic text-brand-grey/70">incertidumbre.</span>
+                   ¿Siente que su negocio <br/><span className="italic text-brand-grey/70">tocó techo?</span>
                  </h2>
                  <div className="space-y-6 text-lg text-brand-grey font-light leading-relaxed">
                    <p>
-                     Fundada en Santiago, Chile por <strong>Manuel Baumann</strong>, Baumann&Co no es solo una consultora; es un socio estratégico diseñado para la era de la complejidad.
+                     Fundada en Santiago por <strong>Manuel Baumann</strong>, nos dedicamos a ayudar a dueños que lograron hacer crecer sus empresas a pulso, pero que ahora se sienten atrapados en la operación diaria.
                    </p>
                    <p>
-                     Creemos que los datos sin contexto son ruido. Nuestro equipo de ex-directivos y analistas senior trabaja codo a codo con su junta directiva para asegurar que la estrategia no se quede en el papel, sino que se traduzca en ejecución impecable.
+                     Entendemos perfectamente la situación: las ventas dependen de sus relaciones personales, no hay métricas claras y el equipo no rinde como debería. Nosotros ponemos el orden necesario para que pueda recuperar su vida y su empresa siga creciendo.
                    </p>
                  </div>
                </div>
@@ -73,9 +73,9 @@ function App() {
 
            <div className="container mx-auto px-6 md:px-12 relative z-10">
              <div className="text-center max-w-3xl mx-auto mb-16">
-               <span className="text-brand-accent/80 font-bold tracking-widest uppercase text-xs mb-4 block">Nuestra Metodología</span>
-               <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif mb-6">Insight to Impact</h2>
-               <p className="text-brand-accent/70 font-light text-lg">Un proceso iterativo diseñado para resultados tangibles y sostenibles.</p>
+               <span className="text-brand-accent/80 font-bold tracking-widest uppercase text-xs mb-4 block">Cómo Trabajamos</span>
+               <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif mb-6">3 Pasos Claros</h2>
+               <p className="text-brand-accent/70 font-light text-lg">Sin teoría compleja. Solo acciones concretas para ordenar y escalar.</p>
              </div>
 
              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
@@ -83,9 +83,9 @@ function App() {
                 <div className="absolute top-12 left-0 w-full h-px bg-white/10 hidden md:block z-0"></div>
 
                 {[
-                  { step: "01", title: "Diagnóstico", desc: "Análisis profundo basado en datos y entrevistas cualitativas." },
-                  { step: "02", title: "Estrategia", desc: "Diseño de soluciones iterativas y adaptables al mercado." },
-                  { step: "03", title: "Ejecución", desc: "Acompañamiento directivo durante la implementación." }
+                  { step: "01", title: "Diagnóstico Real", desc: "Miramos sus números y procesos sin filtro. Le decimos exactamente dónde pierde dinero." },
+                  { step: "02", title: "Orden y Reglas", desc: "Estandarizamos cómo se vende y cómo se opera. Creamos manuales y métricas." },
+                  { step: "03", title: "Crecimiento", desc: "Con la casa ordenada, aceleramos las ventas y abrimos nuevos mercados." }
                 ].map((item, idx) => (
                   <div key={idx} className="relative z-10 bg-brand-primary md:bg-transparent p-6 text-center group">
                     <div className="w-24 h-24 mx-auto bg-brand-primary rounded-full flex items-center justify-center border border-brand-accent/30 mb-8 group-hover:bg-brand-accent group-hover:border-brand-accent transition-colors duration-500 shadow-xl relative">

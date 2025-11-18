@@ -37,13 +37,13 @@ const Hero: React.FC<HeroProps> = ({ onStartConsultation }) => {
             </span>
           </div>
 
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-medium text-white leading-[1.1] mb-8 tracking-tight animate-[fadeInUp_1s_ease-out_0.4s_both]">
-            Claridad estratégica <br />
-            <span className="italic font-normal text-brand-accent/90">en un mundo complejo.</span>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-medium text-white leading-[1.1] mb-8 tracking-tight animate-[fadeInUp_1s_ease-out_0.4s_both]">
+            Deje de depender de <br />
+            <span className="italic font-normal text-brand-accent/90">usted mismo.</span>
           </h1>
           
-          <p className="text-brand-accent/80 text-lg md:text-xl font-light max-w-2xl mx-auto mb-12 leading-relaxed animate-[fadeInUp_1s_ease-out_0.6s_both]">
-            Baumann&Co fusiona la inteligencia de datos con la intuición humana para transformar desafíos corporativos en legados duraderos.
+          <p className="text-brand-accent/80 text-lg md:text-xl font-light max-w-3xl mx-auto mb-12 leading-relaxed animate-[fadeInUp_1s_ease-out_0.6s_both]">
+            Para dueños de empresas que venden bien, pero sienten que viven apagando incendios. Convertimos sus ventas en un sistema y su gestión en datos claros.
           </p>
           
           <div className="flex flex-col md:flex-row gap-5 justify-center items-center animate-[fadeInUp_1s_ease-out_0.8s_both]">
@@ -61,7 +61,7 @@ const Hero: React.FC<HeroProps> = ({ onStartConsultation }) => {
               onClick={(e) => handleNavigation(e, 'services')}
               className="px-8 py-4 text-white font-medium text-sm tracking-wide border border-white/20 rounded-full hover:bg-white/10 hover:border-white/40 transition-all backdrop-blur-sm cursor-pointer"
             >
-              Explorar Servicios
+              Cómo ayudamos
             </button>
           </div>
         </div>

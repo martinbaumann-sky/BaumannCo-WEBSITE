@@ -18,10 +18,10 @@ const Questionnaire: React.FC<QuestionnaireProps> = ({ onBack }) => {
     // Fase 2: Rol y Tiempo
     role: '',
     timeline: '',
-    // Fase 3: Contexto (NUEVO)
+    // Fase 3: Contexto
     industry: '',
-    priority: '',
-    // Fase 4: Identificación (Solo si califica)
+    pain_point: '',
+    // Fase 4: Identificación
     name: '',
     company: '',
     challenge: ''
@@ -32,23 +32,44 @@ const Questionnaire: React.FC<QuestionnaireProps> = ({ onBack }) => {
   };
 
   const handleNext = () => {
-    // El filtro se ejecuta al final de la Fase 2
+    // --- LÓGICA DE LEAD SCORING (CRITERIOS ESTRICTOS) ---
+
     if (step === 2) {
-      // CRITERIOS DE FILTRO:
-      // 1. Facturación menor a 1M -> Descalificado
-      // 2. Cargo "Estudiante/Investigador" -> Descalificado
-      if (formData.revenue === 'menos_1m' || formData.role === 'student') {
+      // 1. Ventas Anuales:
+      //    - < USD 500K: DESCARTAR
+      //    - 500K - 1M: MEDIA (Aceptable)
+      //    - > 1M: ALTA (Ideal)
+      const revenueDiscard = formData.revenue === 'menos_500k';
+      
+      // 2. Rol del contacto:
+      //    - Dueño/Gerente: ALTA
+      //    - Subgerente: MEDIA
+      //    - Consultor/Estudiante: DESCARTAR
+      const roleDiscard = formData.role === 'consultant' || formData.role === 'student';
+
+      if (revenueDiscard || roleDiscard) {
         setIsQualified(false);
         return; 
       } else {
-        setIsQualified(true);
+        setIsQualified(true); // Pasa provisionalmente
       }
+    }
+
+    if (step === 3) {
+       // 3. Dolor Percibido:
+       //    - "Ventas dependen de mí" / "Sin control": ALTA
+       //    - "Mejorar marketing": MEDIA
+       //    - "Solo branding/seguidores": DESCARTAR
+       if (formData.pain_point === 'branding_only') {
+          setIsQualified(false);
+          return;
+       }
     }
     
     setStep(step + 1);
   };
 
-  // Pantalla de Descalificación
+  // Pantalla de Descalificación (Mensaje educado pero firme)
   if (isQualified === false) {
     return (
       <div className="fixed inset-0 z-50 bg-white flex items-center justify-center p-6 animate-fade-in">
@@ -56,11 +77,11 @@ const Questionnaire: React.FC<QuestionnaireProps> = ({ onBack }) => {
           <div className="w-20 h-20 bg-brand-accent/20 rounded-full flex items-center justify-center mx-auto mb-6">
             <AlertCircle size={40} className="text-brand-primary" />
           </div>
-          <h2 className="text-2xl font-serif text-brand-primary mb-4">Evaluación de Perfil</h2>
+          <h2 className="text-2xl font-serif text-brand-primary mb-4">No somos el socio adecuado hoy</h2>
           <p className="text-brand-grey mb-8 leading-relaxed text-sm">
-            Tras analizar los parámetros operativos proporcionados, hemos determinado que su organización se encuentra en una etapa distinta al foco estratégico de Baumann&Co.
+            Muchas gracias por su interés. En Baumann&Co nos especializamos exclusivamente en empresas consolidadas (Ventas sobre USD 1M) que requieren reestructuración corporativa.
             <br/><br/>
-            Nuestra estructura de consultoría está optimizada para corporaciones de alta complejidad y escala financiera. Agradecemos su interés en nuestra firma.
+            Según sus respuestas, su etapa actual requiere otro tipo de apoyo (posiblemente agencias de marketing digital o mentores de emprendimiento). Preferimos ser honestos para no hacerle perder tiempo.
           </p>
           <button 
             onClick={onBack}
@@ -83,8 +104,8 @@ const Questionnaire: React.FC<QuestionnaireProps> = ({ onBack }) => {
                 <Calendar size={20} className="text-brand-accent"/>
              </div>
              <div>
-               <h2 className="font-serif text-lg">Coordinación de Sesión</h2>
-               <p className="text-xs text-brand-accent/70">Seleccione un bloque horario disponible para la reunión.</p>
+               <h2 className="font-serif text-lg">Sesión de Estrategia</h2>
+               <p className="text-xs text-brand-accent/70">Reserve su hora con un socio director.</p>
              </div>
           </div>
           <button onClick={onBack} className="p-2 hover:bg-white/10 rounded-full transition-colors">
@@ -103,8 +124,8 @@ const Questionnaire: React.FC<QuestionnaireProps> = ({ onBack }) => {
           {GOOGLE_CALENDAR_LINK.includes("TU_LINK_REAL") && (
             <div className="absolute inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm text-white p-8 text-center pointer-events-none">
                <div>
-                 <h3 className="text-2xl font-bold mb-2">Configuración Pendiente</h3>
-                 <p>Inserte el enlace de Google Calendar Appointment Schedule en <code>components/Questionnaire.tsx</code></p>
+                 <h3 className="text-2xl font-bold mb-2">Calendario no vinculado</h3>
+                 <p>Debe insertar su enlace de "Google Appointment Schedule" en el código.</p>
                </div>
             </div>
           )}
@@ -119,20 +140,20 @@ const Questionnaire: React.FC<QuestionnaireProps> = ({ onBack }) => {
       <div className="md:w-1/3 bg-brand-primary p-8 md:p-12 flex flex-col justify-between text-white">
         <div>
           <button onClick={onBack} className="flex items-center gap-2 text-brand-accent/60 hover:text-white transition-colors mb-12 text-xs font-bold uppercase tracking-widest">
-            <ChevronLeft size={16} /> Cancelar proceso
+            <ChevronLeft size={16} /> Cancelar
           </button>
-          <h2 className="text-3xl md:text-4xl font-serif mb-6">Evaluación Preliminar</h2>
+          <h2 className="text-3xl md:text-4xl font-serif mb-6">Validación Rápida</h2>
           <p className="text-brand-accent/70 font-light leading-relaxed text-sm">
-            Este proceso valida la alineación entre sus requerimientos estratégicos y nuestras capacidades ejecutivas.
+            Solo trabajamos con empresas donde sabemos que podemos generar un retorno de 10x sobre nuestra tarifa. Estas preguntas nos ayudan a saber si somos compatibles.
           </p>
         </div>
         
         <div className="mt-12 space-y-6">
           {[
-            { id: 1, label: "Estructura Organizacional" },
-            { id: 2, label: "Alcance y Temporalidad" },
-            { id: 3, label: "Contexto Estratégico" },
-            { id: 4, label: "Identificación del Caso" }
+            { id: 1, label: "Tamaño del Negocio" },
+            { id: 2, label: "Su Rol" },
+            { id: 3, label: "Dolor Principal" },
+            { id: 4, label: "Datos Finales" }
           ].map((s) => (
             <div key={s.id} className="flex items-center gap-4">
               <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold border transition-colors ${
@@ -152,26 +173,28 @@ const Questionnaire: React.FC<QuestionnaireProps> = ({ onBack }) => {
       <div className="flex-1 bg-white p-8 md:p-12 overflow-y-auto flex items-center justify-center">
         <div className="w-full max-w-lg">
           
-          {/* Paso 1: Dimensiones */}
+          {/* Paso 1: Dimensiones (Ventas y Empleados) */}
           {step === 1 && (
             <div className="animate-slide-up space-y-8">
               <div>
-                <span className="text-brand-primary/60 font-bold tracking-widest uppercase text-xs mb-2 block">Fase 1 de 4</span>
-                <h3 className="text-3xl font-serif text-brand-primary">Dimensiones Operativas</h3>
+                <span className="text-brand-primary/60 font-bold tracking-widest uppercase text-xs mb-2 block">Paso 1 de 4</span>
+                <h3 className="text-3xl font-serif text-brand-primary">Volumen de Venta</h3>
+                <p className="text-brand-grey text-sm mt-2">Para entender la complejidad de su operación.</p>
               </div>
               
               <div className="space-y-6">
                 <div className="space-y-3">
                   <label className="flex items-center gap-2 text-sm font-medium text-brand-grey">
                     <Building2 size={16} />
-                    Facturación Anual Global (USD)
+                    Ventas Anuales (USD)
                   </label>
                   <div className="grid grid-cols-1 gap-3">
                     {[
-                      { value: 'menos_1m', label: '< 1M USD' },
-                      { value: '1m_10m', label: '1M - 10M USD' },
-                      { value: '10m_50m', label: '10M - 50M USD' },
-                      { value: 'mas_50m', label: '> 50M USD' }
+                      { value: 'menos_500k', label: 'Menos de USD 500k (Pequeña / Inicial)' },
+                      { value: '500k_1m', label: 'USD 500k - 1M (En crecimiento)' },
+                      { value: '1m_10m', label: 'USD 1M - 10M (Mediana consolidada)' },
+                      { value: '10m_20m', label: 'USD 10M - 20M (Mediana grande)' },
+                      { value: 'mas_20m', label: 'Más de USD 20M (Corporativo)' }
                     ].map((opt) => (
                       <label key={opt.value} className={`flex items-center p-4 border rounded-lg cursor-pointer transition-all ${formData.revenue === opt.value ? 'border-brand-primary bg-brand-primary/5 shadow-sm' : 'border-brand-accent/40 hover:border-brand-primary/40'}`}>
                         <input 
@@ -188,7 +211,7 @@ const Questionnaire: React.FC<QuestionnaireProps> = ({ onBack }) => {
                 </div>
 
                 <div className="space-y-3">
-                  <label className="block text-sm font-medium text-brand-grey">Dotación de Colaboradores</label>
+                  <label className="block text-sm font-medium text-brand-grey">Cantidad de Empleados</label>
                   <select 
                     name="employees"
                     value={formData.employees}
@@ -196,10 +219,11 @@ const Questionnaire: React.FC<QuestionnaireProps> = ({ onBack }) => {
                     className="w-full p-4 bg-white border border-brand-accent/40 focus:border-brand-primary outline-none rounded-lg transition-all text-brand-primary appearance-none text-sm"
                   >
                     <option value="">Seleccione rango</option>
-                    <option value="1-10">1 - 10 colaboradores</option>
-                    <option value="11-50">11 - 50 colaboradores</option>
-                    <option value="51-200">51 - 200 colaboradores</option>
-                    <option value="200+">200+ colaboradores</option>
+                    <option value="1-10">1 - 10 personas</option>
+                    <option value="11-30">11 - 30 personas</option>
+                    <option value="31-100">31 - 100 personas</option>
+                    <option value="101-200">101 - 200 personas</option>
+                    <option value="200+">Más de 200</option>
                   </select>
                 </div>
               </div>
@@ -209,24 +233,25 @@ const Questionnaire: React.FC<QuestionnaireProps> = ({ onBack }) => {
                 disabled={!formData.revenue || !formData.employees}
                 className="w-full py-4 bg-brand-primary text-white rounded-lg font-bold tracking-wide hover:bg-brand-secondary disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2 shadow-lg shadow-brand-primary/10 uppercase text-xs"
               >
-                Siguiente Fase <ArrowRight size={16} />
+                Siguiente <ArrowRight size={16} />
               </button>
             </div>
           )}
 
-          {/* Paso 2: Rol y Tiempo */}
+          {/* Paso 2: Rol */}
           {step === 2 && (
             <div className="animate-slide-up space-y-8">
                <div>
-                <span className="text-brand-primary/60 font-bold tracking-widest uppercase text-xs mb-2 block">Fase 2 de 4</span>
-                <h3 className="text-3xl font-serif text-brand-primary">Perfil de Autoridad</h3>
+                <span className="text-brand-primary/60 font-bold tracking-widest uppercase text-xs mb-2 block">Paso 2 de 4</span>
+                <h3 className="text-3xl font-serif text-brand-primary">¿Quién eres?</h3>
+                <p className="text-brand-grey text-sm mt-2">Nuestras soluciones requieren decisión de alto nivel.</p>
               </div>
               
               <div className="space-y-6">
                  <div className="space-y-3">
                   <label className="flex items-center gap-2 text-sm font-medium text-brand-grey">
                     <User size={16} />
-                    Posición en la Organización
+                    Su Cargo
                   </label>
                   <select 
                     name="role"
@@ -234,25 +259,24 @@ const Questionnaire: React.FC<QuestionnaireProps> = ({ onBack }) => {
                     onChange={handleChange}
                     className="w-full p-4 bg-white border border-brand-accent/40 focus:border-brand-primary outline-none rounded-lg transition-all text-brand-primary text-sm"
                   >
-                    <option value="">Seleccione su cargo</option>
-                    <option value="c-level">C-Level / Propietario / Directorio</option>
-                    <option value="vp-director">Vicepresidente / Gerente División</option>
-                    <option value="manager">Gerencia Media / Jefe de Área</option>
-                    <option value="student">Analista / Estudiante / Académico</option>
+                    <option value="">Seleccione su rol</option>
+                    <option value="owner">Dueño / Socio / Gerente General (Decisor)</option>
+                    <option value="manager">Gerente Comercial / Subgerente</option>
+                    <option value="consultant">Consultor Externo / Agencia</option>
+                    <option value="student">Estudiante / Otro</option>
                   </select>
                 </div>
 
                 <div className="space-y-3">
                   <label className="flex items-center gap-2 text-sm font-medium text-brand-grey">
                     <Clock size={16} />
-                    Horizonte de Implementación
+                    Nivel de Urgencia
                   </label>
                    <div className="grid grid-cols-1 gap-3">
                     {[
-                        { val: 'inmediato', txt: 'Crítico / Inmediato (< 30 días)' }, 
-                        { val: 'corto', txt: 'Corto Plazo (1-3 meses)' }, 
-                        { val: 'mediano', txt: 'Planificación 2025 (3-6 meses)' }, 
-                        { val: 'exploratorio', txt: 'Fase Exploratoria / Sin fecha' }
+                        { val: 'urgente', txt: 'Alta: Estamos estancados y necesitamos cambios ya.' }, 
+                        { val: 'corto', txt: 'Media: Planificando para el próximo trimestre.' }, 
+                        { val: 'largo', txt: 'Baja: Solo estoy explorando ideas.' }, 
                     ].map((time) => (
                       <label key={time.val} className={`flex items-center p-3 border rounded-lg cursor-pointer transition-all ${formData.timeline === time.val ? 'border-brand-primary bg-brand-primary/5 shadow-sm' : 'border-brand-accent/40 hover:border-brand-primary/40'}`}>
                         <input 
@@ -276,25 +300,51 @@ const Questionnaire: React.FC<QuestionnaireProps> = ({ onBack }) => {
                   disabled={!formData.role || !formData.timeline}
                   className="flex-1 py-4 bg-brand-primary text-white rounded-lg font-bold tracking-wide hover:bg-brand-secondary disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2 shadow-lg shadow-brand-primary/10 uppercase text-xs"
                 >
-                  Validar Perfil <ArrowRight size={16} />
+                  Siguiente <ArrowRight size={16} />
                 </button>
               </div>
             </div>
           )}
 
-          {/* Paso 3: Contexto Estratégico (NUEVO) */}
+          {/* Paso 3: Dolor Principal (Filtro Final) */}
           {step === 3 && isQualified === true && (
             <div className="animate-slide-up space-y-8">
               <div>
-                <span className="text-brand-primary/60 font-bold tracking-widest uppercase text-xs mb-2 block">Fase 3 de 4</span>
-                <h3 className="text-3xl font-serif text-brand-primary">Contexto de Negocio</h3>
+                <span className="text-brand-primary/60 font-bold tracking-widest uppercase text-xs mb-2 block">Paso 3 de 4</span>
+                <h3 className="text-3xl font-serif text-brand-primary">¿Qué te duele hoy?</h3>
               </div>
               
               <div className="space-y-6">
                 <div className="space-y-3">
                   <label className="flex items-center gap-2 text-sm font-medium text-brand-grey">
+                    <Target size={16} />
+                    Selecciona la frase que mejor te identifica:
+                  </label>
+                  <div className="grid grid-cols-1 gap-3">
+                    {[
+                      { val: "dependence", txt: "Las ventas dependen de mí. Si yo no estoy, no se vende." },
+                      { val: "control", txt: "Vendemos harto pero no sé cuánto ganamos realmente (desorden)." },
+                      { val: "structure", txt: "El equipo no rinde. Necesito profesionalizar la gerencia." },
+                      { val: "branding_only", txt: "Solo quiero mejorar mi Instagram o hacer Branding." }
+                    ].map((pain) => (
+                      <label key={pain.val} className={`flex items-center p-3 border rounded-lg cursor-pointer transition-all ${formData.pain_point === pain.val ? 'border-brand-primary bg-brand-primary/5 shadow-sm' : 'border-brand-accent/40 hover:border-brand-primary/40'}`}>
+                        <input 
+                          type="radio" 
+                          name="pain_point"
+                          value={pain.val}
+                          onChange={handleChange}
+                          className="w-4 h-4 text-brand-primary focus:ring-brand-primary accent-brand-primary"
+                        />
+                        <span className="ml-3 text-brand-primary text-sm">{pain.txt}</span>
+                      </label>
+                    ))}
+                  </div>
+                </div>
+                
+                <div className="space-y-3">
+                  <label className="flex items-center gap-2 text-sm font-medium text-brand-grey">
                     <Briefcase size={16} />
-                    Sector Industrial
+                    Industria
                   </label>
                   <select 
                     name="industry"
@@ -303,41 +353,13 @@ const Questionnaire: React.FC<QuestionnaireProps> = ({ onBack }) => {
                     className="w-full p-4 bg-white border border-brand-accent/40 focus:border-brand-primary outline-none rounded-lg transition-all text-brand-primary text-sm"
                   >
                     <option value="">Seleccione Industria</option>
-                    <option value="mining">Minería y Recursos Naturales</option>
-                    <option value="finance">Servicios Financieros / Banca</option>
-                    <option value="retail">Retail y Consumo Masivo</option>
-                    <option value="tech">Tecnología y Telecomunicaciones</option>
-                    <option value="manufacturing">Manufactura e Industria</option>
-                    <option value="health">Salud y Farmacéutica</option>
-                    <option value="other">Otro Servicios Corporativos</option>
+                    <option value="services_b2b">Servicios B2B</option>
+                    <option value="manufacturing">Manufactura / Fábrica</option>
+                    <option value="construction">Construcción / Inmobiliaria</option>
+                    <option value="distribution">Logística / Distribución</option>
+                    <option value="retail">Retail</option>
+                    <option value="other">Otra</option>
                   </select>
-                </div>
-
-                <div className="space-y-3">
-                  <label className="flex items-center gap-2 text-sm font-medium text-brand-grey">
-                    <Target size={16} />
-                    Prioridad Estratégica Principal
-                  </label>
-                  <div className="grid grid-cols-1 gap-3">
-                    {[
-                      "Crecimiento y Expansión de Mercado",
-                      "Eficiencia Operacional y Reducción de Costos",
-                      "Transformación Digital y Datos",
-                      "Gestión de Cambio Cultural / Talento",
-                      "Fusiones, Adquisiciones o Finanzas"
-                    ].map((prio) => (
-                      <label key={prio} className={`flex items-center p-3 border rounded-lg cursor-pointer transition-all ${formData.priority === prio ? 'border-brand-primary bg-brand-primary/5 shadow-sm' : 'border-brand-accent/40 hover:border-brand-primary/40'}`}>
-                        <input 
-                          type="radio" 
-                          name="priority"
-                          value={prio}
-                          onChange={handleChange}
-                          className="w-4 h-4 text-brand-primary focus:ring-brand-primary accent-brand-primary"
-                        />
-                        <span className="ml-3 text-brand-primary text-sm">{prio}</span>
-                      </label>
-                    ))}
-                  </div>
                 </div>
               </div>
 
@@ -345,10 +367,10 @@ const Questionnaire: React.FC<QuestionnaireProps> = ({ onBack }) => {
                  <button onClick={() => setStep(2)} className="px-6 py-4 text-brand-grey hover:text-brand-primary font-medium text-sm uppercase tracking-wide">Atrás</button>
                  <button 
                   onClick={handleNext}
-                  disabled={!formData.industry || !formData.priority}
+                  disabled={!formData.industry || !formData.pain_point}
                   className="flex-1 py-4 bg-brand-primary text-white rounded-lg font-bold tracking-wide hover:bg-brand-secondary disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2 shadow-lg shadow-brand-primary/10 uppercase text-xs"
                 >
-                  Continuar <ArrowRight size={16} />
+                  Ver si califico <ArrowRight size={16} />
                 </button>
               </div>
             </div>
@@ -359,11 +381,11 @@ const Questionnaire: React.FC<QuestionnaireProps> = ({ onBack }) => {
             <div className="animate-slide-up space-y-8">
               <div>
                 <span className="text-brand-primary font-bold tracking-widest uppercase text-xs mb-2 flex items-center gap-1">
-                  <CheckCircle2 size={14} /> Pre-Calificación Exitosa
+                  <CheckCircle2 size={14} /> Tu perfil califica
                 </span>
-                <h3 className="text-3xl font-serif text-brand-primary">Identificación del Caso</h3>
+                <h3 className="text-3xl font-serif text-brand-primary">Hablemos</h3>
                 <p className="text-brand-grey mt-2 text-sm leading-relaxed">
-                  Su perfil cumple con nuestros criterios de elegibilidad. Complete la información final para acceder a la agenda de socios.
+                  Parece que podemos ayudarte. Déjanos tus datos para agendar los 45 minutos de diagnóstico sin costo.
                 </p>
               </div>
               
@@ -380,7 +402,7 @@ const Questionnaire: React.FC<QuestionnaireProps> = ({ onBack }) => {
                     />
                   </div>
                    <div className="space-y-2">
-                    <label className="block text-xs font-bold text-brand-primary/70 uppercase tracking-wider">Razón Social</label>
+                    <label className="block text-xs font-bold text-brand-primary/70 uppercase tracking-wider">Empresa</label>
                     <input 
                       type="text" 
                       name="company"
@@ -392,14 +414,14 @@ const Questionnaire: React.FC<QuestionnaireProps> = ({ onBack }) => {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="block text-xs font-bold text-brand-primary/70 uppercase tracking-wider">Detalle del Desafío Estratégico</label>
+                  <label className="block text-xs font-bold text-brand-primary/70 uppercase tracking-wider">Desafío específico (Opcional)</label>
                   <textarea 
                     name="challenge"
                     value={formData.challenge}
                     onChange={handleChange}
-                    rows={4}
+                    rows={3}
                     className="w-full p-3 bg-brand-accent/5 border border-brand-accent/20 focus:bg-white focus:border-brand-primary outline-none rounded-md transition-all text-brand-primary resize-none text-sm"
-                    placeholder="Describa el objetivo central a abordar en la primera sesión..."
+                    placeholder="Ej: Quiero salirme de la operación diaria en 6 meses..."
                   />
                 </div>
               </div>
@@ -408,10 +430,10 @@ const Questionnaire: React.FC<QuestionnaireProps> = ({ onBack }) => {
                  <button onClick={() => setStep(3)} className="px-6 py-4 text-brand-grey hover:text-brand-primary font-medium text-sm uppercase tracking-wide">Atrás</button>
                  <button 
                   onClick={handleNext}
-                  disabled={!formData.name || !formData.company || !formData.challenge}
+                  disabled={!formData.name || !formData.company}
                   className="flex-1 py-4 bg-brand-primary text-white rounded-lg font-bold tracking-wide hover:bg-brand-secondary disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2 shadow-lg shadow-brand-primary/10 uppercase text-xs"
                 >
-                  Acceder a Agenda <Calendar size={16} />
+                  Ir al Calendario <Calendar size={16} />
                 </button>
               </div>
             </div>

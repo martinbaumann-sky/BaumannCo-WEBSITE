@@ -1,36 +1,36 @@
 import React from 'react';
-import { BarChart3, Users, Globe, Layers, ShieldCheck, Lightbulb, ArrowUpRight } from 'lucide-react';
+import { BarChart3, Users, Gavel, Layers, ShieldCheck, TrendingUp, ArrowUpRight } from 'lucide-react';
 
 const services = [
   {
-    icon: BarChart3,
-    title: "Estrategia Corporativa",
-    description: "Hojas de ruta para crecimiento sostenible y expansión de mercado."
+    icon: Gavel,
+    title: "Gobierno y Directorio",
+    description: "Ponemos reglas claras para que la empresa funcione sin que el dueño tenga que aprobar cada decisión."
   },
   {
-    icon: Globe,
-    title: "Transformación Digital",
-    description: "Integración tecnológica para modernizar procesos y experiencia del cliente."
+    icon: TrendingUp,
+    title: "Ventas Sistemáticas",
+    description: "Dejamos de depender de los 'contactos del dueño' y creamos un motor comercial predecible."
   },
   {
     icon: Layers,
-    title: "Optimización Operativa",
-    description: "Maximización de eficiencia reduciendo costos y mejorando agilidad."
+    title: "Control de Números",
+    description: "Tableros simples para saber exactamente cuánto gana y dónde se va el dinero en tiempo real."
   },
   {
     icon: Users,
-    title: "Gestión de Talento",
-    description: "Cultura organizacional y liderazgo para retener el mejor capital humano."
+    title: "Equipo Directivo",
+    description: "Definimos roles y responsabilidades para que sus gerentes realmente gerencien."
   },
   {
     icon: ShieldCheck,
-    title: "Gestión de Riesgos",
-    description: "Identificación y mitigación de vulnerabilidades financieras y operativas."
+    title: "Blindaje Operativo",
+    description: "Preparamos sus procesos para que resistan el crecimiento sin romperse."
   },
   {
-    icon: Lightbulb,
-    title: "Innovación de Producto",
-    description: "Aceleración del ciclo de desarrollo desde la ideación hasta el mercado."
+    icon: BarChart3,
+    title: "Rentabilidad Real",
+    description: "Analizamos qué productos o clientes realmente dejan dinero y cuáles solo dan trabajo."
   }
 ];
 
@@ -53,14 +53,14 @@ const Services: React.FC = () => {
       <div className="container mx-auto px-6 md:px-12">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
           <div className="max-w-2xl">
-            <span className="text-brand-primary font-bold tracking-widest uppercase text-xs mb-4 block opacity-80">Nuestras Capacidades</span>
+            <span className="text-brand-primary font-bold tracking-widest uppercase text-xs mb-4 block opacity-80">Nuestras Soluciones</span>
             <h3 className="text-3xl md:text-4xl lg:text-5xl font-serif text-brand-primary leading-tight">
-              Soluciones integrales para <br/>
-              <span className="italic text-brand-grey font-light">empresas líderes.</span>
+              Ordene la casa para <br/>
+              <span className="italic text-brand-grey font-light">poder crecer tranquilo.</span>
             </h3>
           </div>
           <p className="text-brand-grey text-lg max-w-md leading-relaxed">
-             Combinamos rigor analítico con creatividad estratégica para resolver los problemas más críticos. Seleccione un área para comenzar.
+             Si siente que su empresa se estanca o que el desorden le gana al crecimiento, aquí es donde entramos nosotros.
           </p>
         </div>
 

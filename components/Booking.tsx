@@ -15,14 +15,13 @@ const Booking: React.FC<BookingProps> = ({ onStartConsultation }) => {
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         <div className="max-w-4xl mx-auto text-center mb-16">
           <span className="inline-block py-1 px-3 rounded-full bg-brand-primary border border-brand-accent/20 text-brand-accent text-xs font-bold tracking-widest uppercase mb-6">
-            Proceso de Selección
+            Conversemos
           </span>
           <h3 className="text-3xl md:text-5xl font-serif leading-tight mb-6">
-            Trabajamos con un número limitado de <br/>
-            <span className="italic text-brand-accent">socios estratégicos.</span>
+            ¿Vale la pena una reunión?
           </h3>
           <p className="text-brand-accent/70 text-lg leading-relaxed font-light max-w-2xl mx-auto">
-            Para garantizar la excelencia y profundidad de nuestras intervenciones, realizamos un proceso de cualificación previo. Buscamos empresas comprometidas con un crecimiento real y transformador.
+            No vendemos humo ni soluciones mágicas. Si su empresa factura sobre USD 1M y tiene problemas reales de estructura, queremos conocerlo. Complete este breve filtro para ver si podemos ayudarle.
           </p>
         </div>
 
@@ -33,18 +32,18 @@ const Booking: React.FC<BookingProps> = ({ onStartConsultation }) => {
           {[
             {
               icon: ClipboardCheck,
-              title: "1. Cuestionario de Perfil",
-              desc: "Complete un breve formulario para que entendamos sus desafíos y la escala de su organización."
+              title: "1. Filtro Rápido",
+              desc: "Respondas 4 preguntas clave sobre su negocio."
             },
             {
               icon: Shield,
-              title: "2. Revisión Interna",
-              desc: "Nuestro equipo senior evalúa si nuestras capacidades se alinean con sus objetivos estratégicos."
+              title: "2. Análisis",
+              desc: "Confirmamos si su problema es algo que resolvemos."
             },
             {
               icon: CheckCircle2,
-              title: "3. Sesión Estratégica",
-              desc: "Si califica, agendaremos una reunión de alto nivel para trazar la hoja de ruta."
+              title: "3. Reunión",
+              desc: "Si hay match, nos reunimos 45 minutos sin costo."
             }
           ].map((step, idx) => (
             <div key={idx} className="relative bg-brand-primary/30 backdrop-blur-sm border border-white/5 rounded-2xl p-8 text-center group hover:bg-brand-primary/50 transition-colors duration-500">
@@ -66,13 +65,13 @@ const Booking: React.FC<BookingProps> = ({ onStartConsultation }) => {
               className="group relative px-10 py-5 bg-brand-accent text-brand-primary rounded-full font-bold text-sm tracking-widest uppercase overflow-hidden transition-all hover:shadow-[0_0_40px_rgba(206,217,229,0.3)] hover:scale-105 cursor-pointer"
             >
               <span className="relative z-10 flex items-center gap-3">
-                Agendar Primera Sesión
+                Ver si califico para reunión
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </span>
             </button>
             <p className="text-brand-accent/40 text-xs flex items-center gap-1.5">
               <Lock size={12} />
-              Evaluación confidencial y segura
+              Respetamos la confidencialidad de sus datos
             </p>
           </div>
         </div>
