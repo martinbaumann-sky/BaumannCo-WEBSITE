@@ -5,6 +5,7 @@ import Services from './components/Services';
 import Booking from './components/Booking';
 import Footer from './components/Footer';
 import Questionnaire from './components/Questionnaire';
+import Testimonials from './components/Testimonials';
 
 function App() {
   const [currentView, setCurrentView] = useState<'home' | 'questionnaire'>('home');
@@ -97,6 +98,8 @@ function App() {
              </div>
            </div>
         </section>
+
+        <Testimonials />
         
         <Booking onStartConsultation={handleStartConsultation} />
       </main>
