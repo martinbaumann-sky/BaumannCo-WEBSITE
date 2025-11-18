@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -21,8 +22,8 @@ function App() {
                <div className="lg:w-1/2 relative group">
                  <div className="absolute -top-4 -left-4 w-full h-full border-2 border-brand-accent/40 rounded-2xl z-0 transition-transform duration-500 group-hover:-translate-x-2 group-hover:-translate-y-2"></div>
                  <img 
-                  src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1632&q=80" 
-                  alt="Meeting room" 
+                  src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1632&q=80" 
+                  alt="Modern corporate architecture" 
                   className="relative z-10 rounded-2xl shadow-2xl grayscale hover:grayscale-0 transition-all duration-700 ease-in-out w-full object-cover aspect-[4/3]"
                  />
                  <div className="absolute -bottom-6 -right-6 bg-white p-6 rounded-xl shadow-xl z-20 max-w-xs hidden md:block border border-brand-accent/20">

@@ -29,7 +29,7 @@ const Hero: React.FC = () => {
           
           <div className="inline-block mb-6 animate-[fadeInUp_1s_ease-out_0.2s_both]">
             <span className="px-4 py-1.5 rounded-full border border-brand-accent/30 bg-brand-accent/10 backdrop-blur-sm text-brand-accent text-xs font-bold tracking-[0.2em] uppercase">
-              Est. 2003 — Santiago, Chile
+              Estrategia clara. Crecimiento real.
             </span>
           </div>
 
