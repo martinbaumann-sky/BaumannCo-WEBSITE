@@ -42,8 +42,8 @@ const Hero: React.FC<HeroProps> = ({ onStartConsultation }) => {
             <span className="italic font-normal text-brand-accent/90">ti mismo.</span>
           </h1>
           
-          <p className="text-brand-accent/80 text-lg md:text-xl font-light max-w-3xl mx-auto mb-12 leading-relaxed animate-[fadeInUp_1s_ease-out_0.6s_both]">
-            Consultoría para empresas que necesitan orden, control y rentabilidad.
+          <p className="text-brand-accent/80 text-lg md:text-xl font-light max-w-2xl mx-auto mb-12 leading-relaxed animate-[fadeInUp_1s_ease-out_0.6s_both]">
+            Recupera el orden, el control y la rentabilidad de tu empresa.
           </p>
           
           <div className="flex flex-col md:flex-row gap-5 justify-center items-center animate-[fadeInUp_1s_ease-out_0.8s_both]">

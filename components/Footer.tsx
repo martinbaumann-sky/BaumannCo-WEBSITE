@@ -26,7 +26,7 @@ const Footer: React.FC = () => {
             </div>
             
             <p className="max-w-md mb-6 text-sm leading-relaxed">
-              Consultoría estratégica de alto nivel para empresas que buscan redefinir su futuro. Excelencia, integridad e innovación en cada paso.
+              Consultoría estratégica para empresas que buscan redefinir su futuro. Excelencia, integridad e innovación.
             </p>
           </div>
           
@@ -55,7 +55,7 @@ const Footer: React.FC = () => {
         </div>
         
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-brand-accent/50">
-          <p>&copy; {new Date().getFullYear()} Baumann&Co Consulting Group. Todos los derechos reservados.</p>
+          <p>&copy; {new Date().getFullYear()} Baumann&Co Consulting. Todos los derechos reservados.</p>
           <p className="mt-2 md:mt-0">Designed for Excellence.</p>
         </div>
       </div>
