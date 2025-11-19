@@ -4,33 +4,33 @@ import { BarChart3, Users, Gavel, Layers, ShieldCheck, TrendingUp, ArrowUpRight 
 const services = [
   {
     icon: Gavel,
-    title: "Gobierno y Directorio",
-    description: "Ponemos reglas claras para que la empresa funcione sin que el dueño tenga que aprobar cada decisión."
+    title: "Decisiones sin depender del dueño",
+    description: "Diseñamos gobierno y reglas claras para que la empresa opere sola: decisiones delegadas, roles definidos y control ejecutivo."
   },
   {
     icon: TrendingUp,
-    title: "Ventas Sistemáticas",
-    description: "Dejamos de depender de los 'contactos del dueño' y creamos un motor comercial predecible."
+    title: "Ventas que no dependen de tus contactos",
+    description: "Transformamos ventas intuitivas en un sistema comercial predecible, medible y escalable."
   },
   {
     icon: Layers,
-    title: "Control de Números",
-    description: "Tableros simples para saber exactamente cuánto gana y dónde se va el dinero en tiempo real."
+    title: "Números claros para decidir bien",
+    description: "Tableros ejecutivos que muestran margen, costos, caja y proyecciones en tiempo real."
   },
   {
     icon: Users,
-    title: "Equipo Directivo",
-    description: "Definimos roles y responsabilidades para que sus gerentes realmente gerencien."
+    title: "Gerentes que realmente gerencian",
+    description: "Convertimos tu equipo directivo en líderes que toman decisiones, ejecutan y rinden cuentas."
   },
   {
     icon: ShieldCheck,
-    title: "Blindaje Operativo",
-    description: "Preparamos sus procesos para que resistan el crecimiento sin romperse."
+    title: "Procesos que escalan sin romperse",
+    description: "Ordenamos flujos, controles y responsables para que el crecimiento no quiebre la operación."
   },
   {
     icon: BarChart3,
-    title: "Rentabilidad Real",
-    description: "Analizamos qué productos o clientes realmente dejan dinero y cuáles solo dan trabajo."
+    title: "Qué productos ganan plata y cuáles no",
+    description: "Identificamos dónde está el margen real para priorizar lo que genera plata y cortar lo que drena recursos."
   }
 ];
 
@@ -55,12 +55,12 @@ const Services: React.FC = () => {
           <div className="max-w-2xl">
             <span className="text-brand-primary font-bold tracking-widest uppercase text-xs mb-4 block opacity-80">Nuestras Soluciones</span>
             <h3 className="text-3xl md:text-4xl lg:text-5xl font-serif text-brand-primary leading-tight">
-              Ordene la casa para <br/>
-              <span className="italic text-brand-grey font-light">poder crecer tranquilo.</span>
+              Ordena tu empresa para <br/>
+              <span className="italic text-brand-grey font-light">que vuelva a crecer.</span>
             </h3>
           </div>
           <p className="text-brand-grey text-lg max-w-md leading-relaxed">
-             Si siente que su empresa se estanca o que el desorden le gana al crecimiento, aquí es donde entramos nosotros.
+             Cuando la empresa crece más rápido que su estructura, el dueño queda atrapado en la operación. Ordenamos el negocio para que el crecimiento vuelva a depender del sistema, no de ti.
           </p>
         </div>
 

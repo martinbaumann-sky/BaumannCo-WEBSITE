@@ -21,7 +21,7 @@ const Booking: React.FC<BookingProps> = ({ onStartConsultation }) => {
             ¿Vale la pena una reunión?
           </h3>
           <p className="text-brand-accent/70 text-lg leading-relaxed font-light max-w-2xl mx-auto">
-            No vendemos humo ni soluciones mágicas. Si su empresa factura sobre USD 1M y tiene problemas reales de estructura, queremos conocerlo. Complete este breve filtro para ver si podemos ayudarle.
+            No vendemos humo ni soluciones mágicas. Si tu empresa factura sobre USD 1M y tiene problemas reales de estructura, queremos conocerte. Completa este breve filtro para ver si podemos ayudarte.
           </p>
         </div>
 
@@ -33,12 +33,12 @@ const Booking: React.FC<BookingProps> = ({ onStartConsultation }) => {
             {
               icon: ClipboardCheck,
               title: "1. Filtro Rápido",
-              desc: "Respondas 4 preguntas clave sobre su negocio."
+              desc: "Responde 4 preguntas clave sobre tu negocio."
             },
             {
               icon: Shield,
               title: "2. Análisis",
-              desc: "Confirmamos si su problema es algo que resolvemos."
+              desc: "Confirmamos si tu problema es algo que resolvemos."
             },
             {
               icon: CheckCircle2,
@@ -71,7 +71,7 @@ const Booking: React.FC<BookingProps> = ({ onStartConsultation }) => {
             </button>
             <p className="text-brand-accent/40 text-xs flex items-center gap-1.5">
               <Lock size={12} />
-              Respetamos la confidencialidad de sus datos
+              Respetamos la confidencialidad de tus datos
             </p>
           </div>
         </div>

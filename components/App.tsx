@@ -51,7 +51,7 @@ function App() {
                  </h2>
                  <div className="space-y-6 text-lg text-brand-grey font-light leading-relaxed">
                    <p>
-                     Baumann&Co. es una consultora especializada en empresas medianas que están creciendo, pero se están quedando sin estructura.
+                     Baumann&Co. es una consultora especializada en empresas que están creciendo, pero se están quedando sin estructura.
                    </p>
                    <p>
                      Fundada en Santiago por Manuel Baumann, acompañamos a dueños que hicieron crecer su empresa con esfuerzo propio, pero hoy se enfrentan a un negocio que depende demasiado de ellos, no tiene control claro y está perdiendo velocidad.
@@ -60,7 +60,7 @@ function App() {
                      Nuestro foco es simple: ordenar la operación, clarificar la estrategia y construir los sistemas que permiten crecer sin que el dueño tenga que estar en todo.
                    </p>
                    <p>
-                     Trabajamos con un enfoque directo, ejecutivo y orientado a resultados: diagnosticamos rápido, definimos el plan y lo ejecutamos con usted y su equipo.
+                     Trabajamos con un enfoque directo, ejecutivo y orientado a resultados: diagnosticamos rápido, definimos el plan y lo ejecutamos contigo y tu equipo.
                    </p>
                  </div>
                </div>

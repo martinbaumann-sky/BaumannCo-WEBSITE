@@ -38,12 +38,12 @@ const Hero: React.FC<HeroProps> = ({ onStartConsultation }) => {
           </div>
 
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-medium text-white leading-[1.1] mb-8 tracking-tight animate-[fadeInUp_1s_ease-out_0.4s_both]">
-            Deje de depender de <br />
-            <span className="italic font-normal text-brand-accent/90">usted mismo.</span>
+            Deja de depender de <br />
+            <span className="italic font-normal text-brand-accent/90">ti mismo.</span>
           </h1>
           
           <p className="text-brand-accent/80 text-lg md:text-xl font-light max-w-3xl mx-auto mb-12 leading-relaxed animate-[fadeInUp_1s_ease-out_0.6s_both]">
-            Para dueños de empresas que venden bien, pero sienten que viven apagando incendios. Convertimos sus ventas en un sistema y su gestión en datos claros.
+            Consultoría para empresas que necesitan orden, control y rentabilidad.
           </p>
           
           <div className="flex flex-col md:flex-row gap-5 justify-center items-center animate-[fadeInUp_1s_ease-out_0.8s_both]">
