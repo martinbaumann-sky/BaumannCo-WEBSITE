@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-import { ArrowRight, X, CheckCircle2, AlertCircle, ChevronLeft, Calendar, Building2, User, Clock } from 'lucide-react';
+import { ArrowRight, X, CheckCircle2, AlertCircle, ChevronLeft, User, Building2 } from 'lucide-react';
 
 // ---------------------------------------------------------------------------
-// ¡IMPORTANTE! CONFIGURACIÓN DEL CALENDARIO
+// CONFIGURACIÓN DEL CALENDARIO
 // ---------------------------------------------------------------------------
-// Enlace de agenda oficial de Baumann&Co
-// ---------------------------------------------------------------------------
-const GOOGLE_CALENDAR_LINK = "https://calendar.app.google/H3ubhkotyhWxiZsk8"; 
+const GOOGLE_CALENDAR_LINK = "https://calendar.app.google/tHYe7drv2CuJGXGt8"; 
 
 interface QuestionnaireProps {
   onBack: () => void;
@@ -120,28 +118,31 @@ const Questionnaire: React.FC<QuestionnaireProps> = ({ onBack }) => {
         
         {/* Paso 3: Agendamiento (Google Integration) */}
         {step === 3 && isQualified === true ? (
-           <div className="w-full h-full flex flex-col animate-slide-up p-4 md:p-8 lg:p-12">
-              <div className="mb-4 text-center md:text-left shrink-0">
-                <span className="text-brand-primary font-bold tracking-widest uppercase text-xs mb-2 block">
-                   Paso Final
-                </span>
-                <h3 className="text-2xl md:text-3xl font-serif text-brand-primary">Agenda tu sesión</h3>
+           <div className="w-full h-full flex flex-col animate-slide-up p-0 md:p-0">
+              <div className="p-4 md:p-6 bg-white border-b border-brand-accent/10 shrink-0 flex justify-between items-center">
+                 <div>
+                    <span className="text-brand-primary font-bold tracking-widest uppercase text-xs mb-1 block">
+                       Paso Final
+                    </span>
+                    <h3 className="text-xl md:text-2xl font-serif text-brand-primary">Agenda tu sesión</h3>
+                 </div>
+                 <a 
+                    href={GOOGLE_CALENDAR_LINK} 
+                    target="_blank" 
+                    rel="noreferrer" 
+                    className="md:hidden text-xs text-brand-primary underline"
+                 >
+                    Abrir externo
+                 </a>
               </div>
 
-              <div className="flex-1 w-full bg-white rounded-xl overflow-hidden border border-brand-accent/20 shadow-lg relative">
+              <div className="flex-1 w-full bg-white relative">
                 <iframe 
                   src={GOOGLE_CALENDAR_LINK} 
                   title="Calendario de Agendamiento"
-                  className="absolute inset-0 w-full h-full"
-                  frameBorder="0"
+                  className="absolute inset-0 w-full h-full border-0"
                   allowFullScreen
                 ></iframe>
-              </div>
-              
-              <div className="mt-4 text-center shrink-0">
-                <p className="text-xs text-brand-grey/50">
-                  ¿Problemas visualizando el calendario? <a href={GOOGLE_CALENDAR_LINK} target="_blank" rel="noreferrer" className="text-brand-primary underline hover:text-brand-secondary">Abrir en nueva pestaña</a>
-                </p>
               </div>
            </div>
         ) : (

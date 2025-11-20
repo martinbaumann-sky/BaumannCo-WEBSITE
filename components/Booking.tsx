@@ -18,10 +18,10 @@ const Booking: React.FC<BookingProps> = ({ onStartConsultation }) => {
             Conversemos
           </span>
           <h3 className="text-3xl md:text-5xl font-serif leading-tight mb-6">
-            Veamos si podemos ayudarte.
+            Veamos si realmente podemos ayudarte.
           </h3>
           <p className="text-brand-accent/70 text-lg leading-relaxed font-light max-w-2xl mx-auto">
-            Trabajamos con empresas en crecimiento sin estructura. Validemos brevemente si lo que necesitas calza con lo que hacemos, para respetar tu tiempo.
+            Trabajamos con empresas que están creciendo, pero sienten que su estructura ya no acompaña. Antes de reunirnos, hacemos una pre-evaluación breve para confirmar si lo que necesitas es algo que efectivamente resolvemos. Es la forma más eficiente de respetar tu tiempo y el nuestro.
           </p>
         </div>
 
@@ -32,18 +32,18 @@ const Booking: React.FC<BookingProps> = ({ onStartConsultation }) => {
           {[
             {
               icon: ClipboardCheck,
-              title: "1. Pre-evaluación",
-              desc: "Preguntas clave para entender tu situación actual."
+              title: "Pre-evaluación",
+              desc: "Responde algunas preguntas clave sobre tu negocio para entender tu situación actual."
             },
             {
               icon: Shield,
-              title: "2. Diagnóstico",
-              desc: "Confirmamos si tu problema es estructural y si podemos resolverlo."
+              title: "Diagnóstico de Ajuste",
+              desc: "Validamos si el problema que describes es estructural y si está dentro de nuestro ámbito de trabajo."
             },
             {
               icon: CheckCircle2,
-              title: "3. Reunión Estratégica",
-              desc: "Si hay fit, coordinamos 45 minutos para definir pasos."
+              title: "Reunión Estratégica",
+              desc: "Si hay fit, coordinamos una sesión de 45 minutos para profundizar en tu caso y definir próximos pasos."
             }
           ].map((step, idx) => (
             <div key={idx} className="relative bg-brand-primary/30 backdrop-blur-sm border border-white/5 rounded-2xl p-6 text-center group hover:bg-brand-primary/50 transition-colors duration-500">
@@ -65,7 +65,7 @@ const Booking: React.FC<BookingProps> = ({ onStartConsultation }) => {
               className="group relative px-10 py-5 bg-brand-accent text-brand-primary rounded-full font-bold text-sm tracking-widest uppercase overflow-hidden transition-all hover:shadow-[0_0_40px_rgba(206,217,229,0.3)] hover:scale-105 cursor-pointer"
             >
               <span className="relative z-10 flex items-center gap-3">
-                Ver si califico para reunión
+                Agendar Primera Sesión
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </span>
             </button>
