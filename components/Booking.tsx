@@ -43,7 +43,7 @@ const Booking: React.FC<BookingProps> = ({ onStartConsultation }) => {
             {
               icon: CheckCircle2,
               title: "Reunión Estratégica",
-              desc: "Si hay fit, coordinamos una sesión de 45 minutos para profundizar en tu caso y definir próximos pasos."
+              desc: "Si hay fit, coordinamos una sesión de 30 minutos para profundizar en tu caso y definir próximos pasos."
             }
           ].map((step, idx) => (
             <div key={idx} className="relative bg-brand-primary/30 backdrop-blur-sm border border-white/5 rounded-2xl p-6 text-center group hover:bg-brand-primary/50 transition-colors duration-500">
