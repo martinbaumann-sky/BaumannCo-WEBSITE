@@ -47,7 +47,7 @@ function App() {
                <div className="lg:w-1/2">
                  <span className="text-brand-primary font-bold tracking-widest uppercase text-xs mb-4 block opacity-80">Sobre Nosotros</span>
                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-medium text-brand-primary mb-8 leading-tight">
-                   Crecimiento sin <br/><span className="italic text-brand-grey/70">estructura.</span>
+                   ¿Tu empresa crece, pero <br/><span className="italic text-brand-grey/70">sin estructura?</span>
                  </h2>
                  <div className="space-y-6 text-lg text-brand-grey font-light leading-relaxed">
                    <p>
@@ -60,7 +60,7 @@ function App() {
                      Nuestro foco es simple: ordenar la operación, clarificar la estrategia y construir los sistemas que permiten crecer sin que el dueño tenga que estar en todo.
                    </p>
                    <p>
-                     Trabajamos con un enfoque directo, ejecutivo y orientado a resultados: diagnosticamos rápido, definimos el plan y lo ejecutamos con usted y su equipo.
+                     Trabajamos con un enfoque directo, ejecutivo y orientado a resultados: diagnosticamos rápido, definimos el plan y lo ejecutamos <strong>con usted y su equipo</strong>.
                    </p>
                  </div>
                </div>
@@ -81,7 +81,7 @@ function App() {
              <div className="text-center max-w-3xl mx-auto mb-16">
                <span className="text-brand-accent/80 font-bold tracking-widest uppercase text-xs mb-4 block">Cómo Trabajamos</span>
                <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif mb-6">3 Pasos Claros</h2>
-               <p className="text-brand-accent/70 font-light text-lg">Sin teoría compleja. Solo acciones concretas para ordenar y escalar.</p>
+               <p className="text-brand-accent/70 font-light text-lg">Acciones directas, sin ruido. Ordenamos tu negocio para que pueda crecer sin depender de ti.</p>
              </div>
 
              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
@@ -89,9 +89,9 @@ function App() {
                 <div className="absolute top-12 left-0 w-full h-px bg-white/10 hidden md:block z-0"></div>
 
                 {[
-                  { step: "01", title: "Diagnóstico Real", desc: "Miramos tus números y procesos sin filtro. Te decimos exactamente dónde pierdes dinero." },
-                  { step: "02", title: "Orden y Reglas", desc: "Estandarizamos cómo se vende y cómo se opera. Creamos manuales y métricas." },
-                  { step: "03", title: "Crecimiento", desc: "Con la casa ordenada, aceleramos las ventas y abrimos nuevos mercados." }
+                  { step: "01", title: "Diagnóstico Exacto", desc: "Revisamos tus números, procesos y equipo para identificar los cuellos de botella estructurales. Te decimos exactamente qué está frenando tu crecimiento." },
+                  { step: "02", title: "Orden y Estructura", desc: "Diseñamos cómo debe funcionar la empresa: ventas, operación, roles, procesos y métricas. Dejamos la casa ordenada y con reglas claras." },
+                  { step: "03", title: "Crecimiento Sostenible", desc: "Con la estructura lista, aceleramos ventas, mejoramos márgenes y habilitamos nuevos mercados. Tu negocio crece; tú recuperas control." }
                 ].map((item, idx) => (
                   <div key={idx} className="relative z-10 bg-brand-primary md:bg-transparent p-6 text-center group">
                     <div className="w-24 h-24 mx-auto bg-brand-primary rounded-full flex items-center justify-center border border-brand-accent/30 mb-8 group-hover:bg-brand-accent group-hover:border-brand-accent transition-colors duration-500 shadow-xl relative">

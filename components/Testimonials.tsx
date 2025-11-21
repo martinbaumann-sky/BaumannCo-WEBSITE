@@ -3,22 +3,16 @@ import { Quote, ChevronLeft, ChevronRight, Star } from 'lucide-react';
 
 const testimonials = [
   {
-    quote: "Baumann&Co redefinió nuestra estructura operativa en un momento crítico. No solo entregaron un diagnóstico preciso, sino que lideraron la ejecución con una claridad que devolvió la confianza al directorio.",
-    author: "Roberto Méndez",
-    role: "CEO, Latam Mining Group",
-    year: "2023"
+    quote: "Baumann&Co fue clave en la reorganización comercial de nuestra empresa, quien además de ayudarnos en generar un excelente y potente plan comercial, nos apoyó con su implementación y seguimiento para que este realmente funcione. Su apoyo y mentoria han sido claves para nuestro crecimiento y ahora ya estamos viendo nuevas alternativas de negocios, que seguro podrán ser reales en el corto plazo.",
+    author: "José Manuel Silva",
+    role: "CEO, Agrical",
+    year: ""
   },
   {
-    quote: "La transformación digital suele ser caótica. El equipo de Baumann trajo orden y métricas reales. Pasamos de la teoría a resultados tangibles en el EBITDA en menos de 6 meses.",
-    author: "Carolina Echeverría",
-    role: "VP de Operaciones, Banco Austral",
-    year: "2022"
-  },
-  {
-    quote: "Buscábamos consultores que entendieran la complejidad de una fusión transnacional. Encontramos socios estratégicos que hablaron nuestro idioma desde el día uno.",
-    author: "Felipe Undurraga",
-    role: "Director Ejecutivo, Nova Retail Holdings",
-    year: "2024"
+    quote: "Manuel ha sido clave para ordenar nuestro enfoque comercial. Nos ayuda a detectar, estructurar y priorizar, nuevas oportunidades con claridad y cercanía. Su acompañamiento nos ha permitido avanzar con foco en el negocio y mejores resultados globales.",
+    author: "Juan Pablo Silva",
+    role: "Gerente General, Masterwise",
+    year: ""
   }
 ];
 
@@ -58,7 +52,7 @@ const Testimonials: React.FC = () => {
             {/* Content */}
             <div className="relative z-10 text-center">
               <div className="min-h-[180px] flex items-center justify-center mb-8">
-                <p className="text-xl md:text-2xl font-serif text-brand-primary leading-relaxed italic">
+                <p className="text-lg md:text-xl font-serif text-brand-primary leading-relaxed italic">
                   "{testimonials[activeIndex].quote}"
                 </p>
               </div>
@@ -71,7 +65,6 @@ const Testimonials: React.FC = () => {
                 </div>
                 <h4 className="font-bold text-brand-primary text-lg">{testimonials[activeIndex].author}</h4>
                 <p className="text-brand-grey text-sm">{testimonials[activeIndex].role}</p>
-                <p className="text-brand-accent/80 text-xs mt-1 font-medium">{testimonials[activeIndex].year}</p>
               </div>
             </div>
 

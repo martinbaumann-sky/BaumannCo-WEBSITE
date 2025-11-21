@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowRight, X, CheckCircle2, AlertCircle, ChevronLeft, User, Building2 } from 'lucide-react';
 
 // ---------------------------------------------------------------------------
-// CONFIGURACIÓN DEL CALENDARIO
+// CONFIGURACIÓN DE CALENDLY
 // ---------------------------------------------------------------------------
-const GOOGLE_CALENDAR_LINK = "https://calendar.app.google/tHYe7drv2CuJGXGt8"; 
+const CALENDLY_LINK = "https://calendly.com/manuel-baumann-co/30min"; 
 
 interface QuestionnaireProps {
   onBack: () => void;
@@ -18,14 +18,26 @@ const Questionnaire: React.FC<QuestionnaireProps> = ({ onBack }) => {
     role: '',
     revenue: '',
     employees: '',
-    // Paso 2: Datos y Contexto (Texto)
-    name: '',
-    company: '',
-    industry: '', 
-    challenge: ''
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+  // Efecto para cargar Calendly cuando se llega al paso de agenda (ahora Paso 2)
+  useEffect(() => {
+    if (step === 2 && isQualified === true) {
+      const head = document.querySelector("head");
+      const script = document.createElement("script");
+      script.setAttribute("src", "https://assets.calendly.com/assets/external/widget.js");
+      script.setAttribute("async", "true");
+      head?.appendChild(script);
+
+      return () => {
+        if (head && script.parentNode === head) {
+          head.removeChild(script);
+        }
+      };
+    }
+  }, [step, isQualified]);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -34,7 +46,7 @@ const Questionnaire: React.FC<QuestionnaireProps> = ({ onBack }) => {
 
     if (step === 1) {
       // Lógica de Filtro de Rol:
-      // 1. Consultor/Estudiante: DESCARTAR (No es tomador de decisión)
+      // 1. Consultor/Estudiante: DESCARTAR
       // 2. Los demás pasan.
       const roleDiscard = formData.role === 'consultant' || formData.role === 'student';
 
@@ -75,7 +87,7 @@ const Questionnaire: React.FC<QuestionnaireProps> = ({ onBack }) => {
 
   return (
     <div className="fixed inset-0 z-50 bg-white flex flex-col md:flex-row animate-fade-in h-screen overflow-hidden">
-      {/* Sidebar / Progress */}
+      {/* Sidebar / Progress - Hidden on Mobile */}
       <div className="md:w-1/3 bg-brand-primary p-8 md:p-12 flex flex-col justify-between text-white shrink-0 overflow-y-auto hidden md:flex">
         <div>
           <button onClick={onBack} className="flex items-center gap-2 text-brand-accent/60 hover:text-white transition-colors mb-12 text-xs font-bold uppercase tracking-widest">
@@ -83,15 +95,14 @@ const Questionnaire: React.FC<QuestionnaireProps> = ({ onBack }) => {
           </button>
           <h2 className="text-3xl md:text-4xl font-serif mb-6">Perfilamiento</h2>
           <p className="text-brand-accent/70 font-light leading-relaxed text-sm">
-            Queremos entender tu negocio para aprovechar al máximo la reunión.
+            Validación rápida para asegurar que podemos aportar valor real a tu negocio.
           </p>
         </div>
         
         <div className="mt-12 space-y-6">
           {[
-            { id: 1, label: "Perfil" },
-            { id: 2, label: "Tu Negocio" },
-            { id: 3, label: "Agendar" }
+            { id: 1, label: "Perfil de Empresa" },
+            { id: 2, label: "Agendar Sesión" }
           ].map((s) => (
             <div key={s.id} className="flex items-center gap-4">
               <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold border transition-colors ${
@@ -108,59 +119,59 @@ const Questionnaire: React.FC<QuestionnaireProps> = ({ onBack }) => {
       </div>
 
       {/* Mobile Header (Only visible on mobile) */}
-      <div className="md:hidden w-full bg-brand-primary p-4 flex justify-between items-center text-white shrink-0">
-         <span className="font-serif text-lg">Paso {step} de 3</span>
-         <button onClick={onBack}><X size={24} /></button>
+      <div className="md:hidden w-full bg-brand-primary p-4 flex justify-between items-center text-white shrink-0 z-10 shadow-md">
+         <span className="font-serif text-lg">Paso {step} de 2</span>
+         <button onClick={onBack} className="p-1"><X size={24} /></button>
       </div>
 
       {/* Content Area */}
       <div className={`flex-1 bg-white flex flex-col overflow-hidden`}>
         
-        {/* Paso 3: Agendamiento (Google Integration) */}
-        {step === 3 && isQualified === true ? (
+        {/* Paso 2: Agendamiento (Calendly Integration) */}
+        {step === 2 && isQualified === true ? (
            <div className="w-full h-full flex flex-col animate-slide-up p-0 md:p-0">
               <div className="p-4 md:p-6 bg-white border-b border-brand-accent/10 shrink-0 flex justify-between items-center">
                  <div>
                     <span className="text-brand-primary font-bold tracking-widest uppercase text-xs mb-1 block">
                        Paso Final
                     </span>
-                    <h3 className="text-xl md:text-2xl font-serif text-brand-primary">Agenda tu sesión</h3>
+                    <h3 className="text-lg md:text-2xl font-serif text-brand-primary">Selecciona tu horario</h3>
                  </div>
                  <a 
-                    href={GOOGLE_CALENDAR_LINK} 
+                    href={CALENDLY_LINK} 
                     target="_blank" 
                     rel="noreferrer" 
-                    className="md:hidden text-xs text-brand-primary underline"
+                    className="md:hidden text-xs text-brand-primary underline font-medium"
                  >
                     Abrir externo
                  </a>
               </div>
 
-              <div className="flex-1 w-full bg-white relative">
-                <iframe 
-                  src={GOOGLE_CALENDAR_LINK} 
-                  title="Calendario de Agendamiento"
-                  className="absolute inset-0 w-full h-full border-0"
-                  allowFullScreen
-                ></iframe>
+              <div className="flex-1 w-full bg-white relative overflow-y-auto">
+                {/* Calendly Inline Widget Container */}
+                {/* Se eliminaron los parámetros de pre-relleno (name, a1) ya que no pedimos datos */}
+                <div 
+                  className="calendly-inline-widget" 
+                  data-url={`${CALENDLY_LINK}?hide_event_type_details=1&hide_gdpr_banner=1&primary_color=1B365D`}
+                  style={{ minWidth: '320px', height: '100%', width: '100%' }} 
+                />
               </div>
            </div>
         ) : (
-          /* Pasos 1 y 2: Formularios */
-          <div className="w-full h-full overflow-y-auto p-6 md:p-12 flex flex-col items-center">
-            <div className="w-full max-w-lg pb-10">
-              {/* Paso 1: Perfil (Rol, Ventas, Equipo) */}
+          /* Paso 1: Formulario de Perfil */
+          <div className="w-full h-full overflow-y-auto p-6 md:p-12 flex flex-col items-center justify-center">
+            <div className="w-full max-w-lg pb-20">
               {step === 1 && (
-                <div className="animate-slide-up space-y-8">
+                <div className="animate-slide-up space-y-6 md:space-y-8">
                   <div>
                     <span className="text-brand-primary/60 font-bold tracking-widest uppercase text-xs mb-2 block">Paso 1 de 2</span>
-                    <h3 className="text-3xl font-serif text-brand-primary">Datos Clave</h3>
+                    <h3 className="text-2xl md:text-3xl font-serif text-brand-primary">Datos Clave</h3>
                     <p className="text-brand-grey text-sm mt-2">Para asegurarnos de que somos el socio correcto.</p>
                   </div>
                   
-                  <div className="space-y-6">
+                  <div className="space-y-5 md:space-y-6">
                      {/* Rol */}
-                     <div className="space-y-3">
+                     <div className="space-y-2 md:space-y-3">
                       <label className="flex items-center gap-2 text-sm font-medium text-brand-grey">
                         <User size={16} />
                         Tu Cargo Actual
@@ -169,7 +180,7 @@ const Questionnaire: React.FC<QuestionnaireProps> = ({ onBack }) => {
                         name="role"
                         value={formData.role}
                         onChange={handleChange}
-                        className="w-full p-4 bg-white border border-brand-accent/40 focus:border-brand-primary outline-none rounded-lg transition-all text-brand-primary text-sm"
+                        className="w-full p-4 bg-white border border-brand-accent/40 focus:border-brand-primary outline-none rounded-lg transition-all text-brand-primary text-base md:text-sm" // text-base evita zoom en iOS
                       >
                         <option value="">Selecciona tu rol</option>
                         <option value="owner">Dueño / Socio / Gerente General</option>
@@ -180,7 +191,7 @@ const Questionnaire: React.FC<QuestionnaireProps> = ({ onBack }) => {
                     </div>
 
                     {/* Ventas */}
-                    <div className="space-y-3">
+                    <div className="space-y-2 md:space-y-3">
                       <label className="flex items-center gap-2 text-sm font-medium text-brand-grey">
                         <Building2 size={16} />
                         Ventas Anuales (Aprox USD)
@@ -206,14 +217,14 @@ const Questionnaire: React.FC<QuestionnaireProps> = ({ onBack }) => {
                       </div>
                     </div>
 
-                    {/* Equipo (Antes Dotación) */}
-                    <div className="space-y-3">
+                    {/* Equipo */}
+                    <div className="space-y-2 md:space-y-3">
                       <label className="block text-sm font-medium text-brand-grey">Tamaño del equipo</label>
                       <select 
                         name="employees"
                         value={formData.employees}
                         onChange={handleChange}
-                        className="w-full p-3 bg-white border border-brand-accent/40 focus:border-brand-primary outline-none rounded-lg transition-all text-brand-primary appearance-none text-sm"
+                        className="w-full p-3 bg-white border border-brand-accent/40 focus:border-brand-primary outline-none rounded-lg transition-all text-brand-primary appearance-none text-base md:text-sm"
                       >
                         <option value="">Selecciona</option>
                         <option value="1-10">1 - 10 personas</option>
@@ -227,85 +238,10 @@ const Questionnaire: React.FC<QuestionnaireProps> = ({ onBack }) => {
                   <button 
                     onClick={handleNext}
                     disabled={!formData.role || !formData.revenue || !formData.employees}
-                    className="w-full py-4 bg-brand-primary text-white rounded-lg font-bold tracking-wide hover:bg-brand-secondary disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2 shadow-lg shadow-brand-primary/10 uppercase text-xs"
+                    className="w-full py-4 bg-brand-primary text-white rounded-lg font-bold tracking-wide hover:bg-brand-secondary disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2 shadow-lg shadow-brand-primary/10 uppercase text-xs mt-4"
                   >
-                    Siguiente <ArrowRight size={16} />
+                    Ver disponibilidad <ArrowRight size={16} />
                   </button>
-                </div>
-              )}
-
-              {/* Paso 2: Contacto (Último paso antes de Agenda) */}
-              {step === 2 && isQualified === true && (
-                <div className="animate-slide-up space-y-8">
-                  <div>
-                    <span className="text-brand-primary font-bold tracking-widest uppercase text-xs mb-2 flex items-center gap-1">
-                      <CheckCircle2 size={14} /> Casi listo
-                    </span>
-                    <h3 className="text-3xl font-serif text-brand-primary">Sobre tu empresa</h3>
-                    <p className="text-brand-grey mt-2 text-sm leading-relaxed">
-                      Cuéntanos brevemente quién eres y qué necesitas resolver para que la reunión sea productiva.
-                    </p>
-                  </div>
-                  
-                  <div className="space-y-4">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                       <div className="space-y-2">
-                        <label className="block text-xs font-bold text-brand-primary/70 uppercase tracking-wider">Nombre</label>
-                        <input 
-                          type="text" 
-                          name="name"
-                          value={formData.name}
-                          onChange={handleChange}
-                          className="w-full p-3 bg-brand-accent/5 border border-brand-accent/20 focus:bg-white focus:border-brand-primary outline-none rounded-md transition-all text-brand-primary text-sm"
-                        />
-                      </div>
-                       <div className="space-y-2">
-                        <label className="block text-xs font-bold text-brand-primary/70 uppercase tracking-wider">Empresa</label>
-                        <input 
-                          type="text" 
-                          name="company"
-                          value={formData.company}
-                          onChange={handleChange}
-                          className="w-full p-3 bg-brand-accent/5 border border-brand-accent/20 focus:bg-white focus:border-brand-primary outline-none rounded-md transition-all text-brand-primary text-sm"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="space-y-2">
-                        <label className="block text-xs font-bold text-brand-primary/70 uppercase tracking-wider">Industria</label>
-                        <input 
-                          type="text" 
-                          name="industry"
-                          value={formData.industry}
-                          onChange={handleChange}
-                          placeholder="Ej: Construcción, Minería, Servicios..."
-                          className="w-full p-3 bg-brand-accent/5 border border-brand-accent/20 focus:bg-white focus:border-brand-primary outline-none rounded-md transition-all text-brand-primary text-sm"
-                        />
-                    </div>
-
-                    <div className="space-y-2">
-                      <label className="block text-xs font-bold text-brand-primary/70 uppercase tracking-wider">Principal Desafío</label>
-                      <textarea 
-                        name="challenge"
-                        value={formData.challenge}
-                        onChange={handleChange}
-                        rows={3}
-                        className="w-full p-3 bg-brand-accent/5 border border-brand-accent/20 focus:bg-white focus:border-brand-primary outline-none rounded-md transition-all text-brand-primary resize-none text-sm"
-                        placeholder="Ej: Quiero salirme de la operación diaria, necesitamos orden financiero..."
-                      />
-                    </div>
-                  </div>
-
-                  <div className="flex gap-4 pt-4">
-                     <button onClick={() => setStep(1)} className="px-6 py-4 text-brand-grey hover:text-brand-primary font-medium text-sm uppercase tracking-wide">Atrás</button>
-                     <button 
-                      onClick={handleNext}
-                      disabled={!formData.name || !formData.company || !formData.industry || !formData.challenge}
-                      className="flex-1 py-4 bg-brand-primary text-white rounded-lg font-bold tracking-wide hover:bg-brand-secondary disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2 shadow-lg shadow-brand-primary/10 uppercase text-xs"
-                    >
-                      Agendar Sesión <ArrowRight size={16} />
-                    </button>
-                  </div>
                 </div>
               )}
             </div>

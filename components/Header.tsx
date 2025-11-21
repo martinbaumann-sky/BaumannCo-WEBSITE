@@ -54,19 +54,20 @@ const Header: React.FC<HeaderProps> = ({ onStartConsultation }) => {
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${
         isScrolled 
-          ? 'bg-white/95 backdrop-blur-lg border-b border-brand-accent/20 py-4 shadow-sm' 
-          : 'bg-transparent py-6 md:py-8'
+          ? 'bg-white/95 backdrop-blur-lg border-b border-brand-accent/20 py-3 md:py-4 shadow-sm' 
+          : 'bg-transparent py-4 md:py-8'
       }`}
     >
-      <div className="container mx-auto px-6 md:px-12 flex justify-between items-center">
+      {/* Ajuste de padding lateral para móvil (px-5) vs desktop */}
+      <div className="container mx-auto px-5 md:px-6 lg:px-12 flex justify-between items-center">
         {/* Text Logo */}
         <a 
           href="#" 
           onClick={scrollToTop}
-          className="group block"
+          className="group block shrink-0 z-50 relative"
         >
           <div className={`font-libre text-2xl md:text-3xl tracking-tight transition-colors duration-300 ${
-            isScrolled ? 'text-brand-primary' : 'text-white'
+            isScrolled || isMobileMenuOpen ? 'text-brand-primary' : 'text-white'
           }`}>
             <span className="font-bold">Baumann</span>
             <span className="font-normal opacity-90">&</span>
@@ -75,8 +76,8 @@ const Header: React.FC<HeaderProps> = ({ onStartConsultation }) => {
         </a>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-10">
-          <div className="flex gap-8">
+        <nav className="hidden md:flex items-center gap-4 lg:gap-10">
+          <div className="flex gap-4 lg:gap-8">
             {navLinks.map((link) => (
               <a 
                 key={link.name} 
@@ -94,7 +95,7 @@ const Header: React.FC<HeaderProps> = ({ onStartConsultation }) => {
           </div>
           <button 
             onClick={onStartConsultation}
-            className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 border flex items-center gap-2 ${
+            className={`px-4 lg:px-6 py-2.5 rounded-full text-xs lg:text-sm font-semibold transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 border flex items-center gap-2 whitespace-nowrap ${
               isScrolled 
                 ? 'bg-brand-primary border-brand-primary text-white hover:bg-brand-secondary' 
                 : 'bg-white text-brand-primary border-white hover:bg-brand-accent hover:border-brand-accent'
@@ -107,37 +108,39 @@ const Header: React.FC<HeaderProps> = ({ onStartConsultation }) => {
 
         {/* Mobile Menu Toggle */}
         <button 
-          className={`md:hidden p-2 transition-colors ${isScrolled ? 'text-brand-primary' : 'text-white'}`}
+          className={`md:hidden p-2 transition-colors z-50 relative ${isScrolled || isMobileMenuOpen ? 'text-brand-primary' : 'text-white'}`}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label="Toggle menu"
         >
-          {isMobileMenuOpen ? <X /> : <Menu />}
+          {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
 
       {/* Mobile Menu */}
-      <div className={`absolute top-full left-0 w-full bg-white/95 backdrop-blur-xl shadow-xl border-b border-brand-accent/20 md:hidden transition-all duration-300 ease-in-out origin-top ${
-        isMobileMenuOpen ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0 pointer-events-none'
+      <div className={`fixed inset-0 bg-white/98 backdrop-blur-xl z-40 flex flex-col justify-center items-center md:hidden transition-all duration-300 ease-in-out ${
+        isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
       }`}>
-        <div className="flex flex-col p-6 gap-4">
+        <div className="flex flex-col w-full px-8 gap-6 text-center">
           {navLinks.map((link) => (
             <a 
               key={link.name} 
               href={link.href}
               onClick={(e) => scrollToSection(e, link.href)}
-              className="text-lg font-medium text-brand-primary py-3 border-b border-brand-accent/20 hover:text-brand-secondary transition-colors"
+              className="text-2xl font-serif font-medium text-brand-primary py-2 border-b border-brand-accent/10 hover:text-brand-secondary transition-colors"
             >
               {link.name}
             </a>
           ))}
+          <div className="h-8"></div>
           <button 
             onClick={() => {
               onStartConsultation();
               setIsMobileMenuOpen(false);
             }}
-            className="mt-4 bg-brand-primary text-white text-center py-3 rounded-lg font-medium hover:bg-brand-secondary w-full flex items-center justify-center gap-2"
+            className="bg-brand-primary text-white text-center py-4 rounded-xl font-bold text-lg hover:bg-brand-secondary w-full flex items-center justify-center gap-2 shadow-xl shadow-brand-primary/20"
           >
             Agendar Primera Sesión
-            <ArrowRight size={16} />
+            <ArrowRight size={20} />
           </button>
         </div>
       </div>
