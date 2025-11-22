@@ -35,7 +35,8 @@ function App() {
                  <div className="absolute -top-4 -left-4 w-full h-full border-2 border-brand-accent/40 rounded-2xl z-0 transition-transform duration-500 group-hover:-translate-x-2 group-hover:-translate-y-2"></div>
                  <img 
                   src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1632&q=80" 
-                  alt="Modern corporate architecture" 
+                  alt="Oficinas corporativas modernas en Santiago - Baumann&Co Consultoría" 
+                  loading="lazy"
                   className="relative z-10 rounded-2xl shadow-2xl grayscale hover:grayscale-0 transition-all duration-700 ease-in-out w-full object-cover aspect-[4/3]"
                  />
                  <div className="absolute -bottom-6 -right-6 bg-white p-6 rounded-xl shadow-xl z-20 max-w-xs hidden md:block border border-brand-accent/20">
@@ -60,7 +61,7 @@ function App() {
                      Nuestro foco es simple: ordenar la operación, clarificar la estrategia y construir los sistemas que permiten crecer sin que el dueño tenga que estar en todo.
                    </p>
                    <p>
-                     Trabajamos con un enfoque directo, ejecutivo y orientado a resultados: diagnosticamos rápido, definimos el plan y lo ejecutamos <strong>con usted y su equipo</strong>.
+                     Trabajamos con un enfoque directo, ejecutivo y orientado a resultados: diagnosticamos rápido, definimos el plan y lo ejecutamos <strong>contigo y tu equipo</strong>.
                    </p>
                  </div>
                </div>
