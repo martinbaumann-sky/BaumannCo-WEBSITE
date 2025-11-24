@@ -19,6 +19,18 @@ const Header: React.FC<HeaderProps> = ({ onStartConsultation }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Lock body scroll when mobile menu is open to prevent UX issues
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMobileMenuOpen]);
+
   const toggleLanguage = (e: React.MouseEvent) => {
     e.preventDefault();
     setLanguage(language === 'es' ? 'en' : 'es');
@@ -59,7 +71,7 @@ const Header: React.FC<HeaderProps> = ({ onStartConsultation }) => {
 
   return (
     <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out ${
         isScrolled 
           ? 'bg-white/95 backdrop-blur-lg border-b border-brand-accent/20 py-3 md:py-4 shadow-sm' 
           : 'bg-transparent py-4 md:py-8'
@@ -126,51 +138,58 @@ const Header: React.FC<HeaderProps> = ({ onStartConsultation }) => {
           </button>
         </nav>
 
-        {/* Mobile Menu Toggle */}
+        {/* Mobile Menu Toggle Button */}
         <button 
-          className={`md:hidden p-2 transition-colors z-50 relative ${isScrolled || isMobileMenuOpen ? 'text-brand-primary' : 'text-white'}`}
+          className={`md:hidden p-2 transition-colors z-50 relative focus:outline-none ${
+            isScrolled || isMobileMenuOpen ? 'text-brand-primary' : 'text-white'
+          }`}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label="Toggle menu"
         >
-          {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          {isMobileMenuOpen ? <X size={32} /> : <Menu size={32} />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
-      <div className={`fixed inset-0 bg-white/98 backdrop-blur-xl z-40 flex flex-col justify-center items-center md:hidden transition-all duration-300 ease-in-out ${
-        isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
-      }`}>
-        <div className="flex flex-col w-full px-8 gap-6 text-center">
-          {navLinks.map((link) => (
-            <a 
-              key={link.name} 
-              href={link.href}
-              onClick={(e) => scrollToSection(e, link.href)}
-              className="text-2xl font-serif font-medium text-brand-primary py-2 border-b border-brand-accent/10 hover:text-brand-secondary transition-colors"
+      {/* Mobile Menu Overlay */}
+      <div 
+        className={`fixed inset-0 bg-white z-40 flex flex-col pt-24 pb-8 px-6 md:hidden transition-all duration-300 ease-in-out ${
+          isMobileMenuOpen ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full pointer-events-none'
+        }`}
+      >
+        <div className="flex flex-col h-full justify-between">
+          <div className="flex flex-col gap-6 mt-4">
+            {navLinks.map((link) => (
+              <a 
+                key={link.name} 
+                href={link.href}
+                onClick={(e) => scrollToSection(e, link.href)}
+                className="text-3xl font-serif font-medium text-brand-primary py-3 border-b border-brand-accent/20 hover:text-brand-secondary transition-colors"
+              >
+                {link.name}
+              </a>
+            ))}
+            
+            <button 
+              onClick={toggleLanguage}
+              className="text-brand-primary/80 font-medium flex items-center gap-3 py-3 text-lg"
             >
-              {link.name}
-            </a>
-          ))}
-          
-          <button 
-            onClick={toggleLanguage}
-            className="text-brand-primary font-medium flex items-center justify-center gap-2 py-2"
-          >
-            <Globe size={18} />
-            {language === 'es' ? 'Switch to English' : 'Cambiar a Español'}
-          </button>
+              <Globe size={20} />
+              {language === 'es' ? 'Switch to English' : 'Cambiar a Español'}
+            </button>
+          </div>
 
-          <div className="h-4"></div>
-          <button 
-            onClick={() => {
-              onStartConsultation();
-              setIsMobileMenuOpen(false);
-            }}
-            className="bg-brand-primary text-white text-center py-4 rounded-xl font-bold text-lg hover:bg-brand-secondary w-full flex items-center justify-center gap-2 shadow-xl shadow-brand-primary/20"
-          >
-            {t.nav.cta}
-            <ArrowRight size={20} />
-          </button>
+          <div className="flex flex-col gap-4 mb-safe-bottom">
+            <button 
+              onClick={() => {
+                onStartConsultation();
+                setIsMobileMenuOpen(false);
+              }}
+              className="bg-brand-primary text-white text-center py-5 rounded-xl font-bold text-xl hover:bg-brand-secondary w-full flex items-center justify-center gap-3 shadow-xl shadow-brand-primary/20 active:scale-[0.98] transition-transform"
+            >
+              {t.nav.cta}
+              <ArrowRight size={24} />
+            </button>
+          </div>
         </div>
       </div>
     </header>
