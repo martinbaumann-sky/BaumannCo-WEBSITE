@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Quote, ChevronLeft, ChevronRight, Star } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const testimonials = [
   {
@@ -17,6 +18,7 @@ const testimonials = [
 ];
 
 const Testimonials: React.FC = () => {
+  const { t } = useLanguage();
   const [activeIndex, setActiveIndex] = useState(0);
 
   const next = () => {
@@ -29,27 +31,24 @@ const Testimonials: React.FC = () => {
 
   return (
     <section className="py-24 bg-white relative overflow-hidden">
-      {/* Background Element */}
       <div className="absolute top-0 right-0 w-64 h-64 bg-brand-accent/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
 
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <span className="text-brand-primary/60 font-bold tracking-widest uppercase text-xs mb-4 block">
-              Trayectoria Probada
+              {t.testimonials.tag}
             </span>
             <h3 className="text-3xl md:text-4xl font-serif text-brand-primary">
-              Impacto real en <span className="italic text-brand-grey">decisiones críticas.</span>
+              {t.testimonials.title} <span className="italic text-brand-grey">{t.testimonials.title_italic}</span>
             </h3>
           </div>
 
           <div className="relative bg-white border border-brand-accent/20 rounded-2xl p-8 md:p-16 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.05)]">
-            {/* Quote Icon */}
             <div className="absolute top-8 left-8 md:top-12 md:left-12 text-brand-accent/30">
               <Quote size={64} fill="currentColor" stroke="none" />
             </div>
 
-            {/* Content */}
             <div className="relative z-10 text-center">
               <div className="min-h-[180px] flex items-center justify-center mb-8">
                 <p className="text-lg md:text-xl font-serif text-brand-primary leading-relaxed italic">
@@ -68,25 +67,21 @@ const Testimonials: React.FC = () => {
               </div>
             </div>
 
-            {/* Controls */}
             <div className="flex justify-between items-center absolute top-1/2 left-0 w-full px-4 md:px-8 -translate-y-1/2 pointer-events-none">
               <button 
                 onClick={prev}
                 className="w-12 h-12 rounded-full bg-white border border-brand-accent/30 flex items-center justify-center text-brand-primary hover:bg-brand-primary hover:text-white transition-all shadow-sm pointer-events-auto group cursor-pointer"
-                aria-label="Anterior testimonio"
               >
                 <ChevronLeft size={20} className="group-hover:-translate-x-0.5 transition-transform" />
               </button>
               <button 
                 onClick={next}
                 className="w-12 h-12 rounded-full bg-white border border-brand-accent/30 flex items-center justify-center text-brand-primary hover:bg-brand-primary hover:text-white transition-all shadow-sm pointer-events-auto group cursor-pointer"
-                aria-label="Siguiente testimonio"
               >
                 <ChevronRight size={20} className="group-hover:translate-x-0.5 transition-transform" />
               </button>
             </div>
 
-            {/* Indicators */}
             <div className="flex justify-center gap-2 mt-8">
               {testimonials.map((_, idx) => (
                 <button
@@ -95,7 +90,6 @@ const Testimonials: React.FC = () => {
                   className={`h-1.5 rounded-full transition-all duration-300 ${
                     idx === activeIndex ? 'w-8 bg-brand-primary' : 'w-2 bg-brand-accent/40 hover:bg-brand-accent'
                   }`}
-                  aria-label={`Ir al testimonio ${idx + 1}`}
                 />
               ))}
             </div>

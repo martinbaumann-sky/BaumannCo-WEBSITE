@@ -1,11 +1,14 @@
 import React from 'react';
 import { ArrowDown, ChevronRight } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface HeroProps {
   onStartConsultation: () => void;
 }
 
 const Hero: React.FC<HeroProps> = ({ onStartConsultation }) => {
+  const { t } = useLanguage();
+
   const handleNavigation = (e: React.MouseEvent, targetId: string) => {
     e.preventDefault();
     const element = document.getElementById(targetId);
@@ -33,18 +36,17 @@ const Hero: React.FC<HeroProps> = ({ onStartConsultation }) => {
           
           <div className="inline-block mb-6 animate-[fadeInUp_1s_ease-out_0.2s_both]">
             <span className="px-4 py-1.5 rounded-full border border-brand-accent/30 bg-brand-accent/10 backdrop-blur-sm text-brand-accent text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase">
-              Estrategia clara. Crecimiento real.
+              {t.hero.tag}
             </span>
           </div>
 
-          {/* Título responsivo: más pequeño en móvil (3xl) para no desbordar */}
           <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-serif font-medium text-white leading-[1.15] mb-6 md:mb-8 tracking-tight animate-[fadeInUp_1s_ease-out_0.4s_both]">
-            Deja de depender de <br />
-            <span className="italic font-normal text-brand-accent/90">ti mismo.</span>
+            {t.hero.title_1} <br />
+            <span className="italic font-normal text-brand-accent/90">{t.hero.title_2}</span>
           </h1>
           
           <p className="text-brand-accent/80 text-base md:text-xl font-light max-w-2xl mx-auto mb-10 md:mb-12 leading-relaxed animate-[fadeInUp_1s_ease-out_0.6s_both] px-4">
-            Recupera el orden, el control y la rentabilidad de tu empresa.
+            {t.hero.subtitle}
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-[fadeInUp_1s_ease-out_0.8s_both] w-full px-6">
@@ -53,7 +55,7 @@ const Hero: React.FC<HeroProps> = ({ onStartConsultation }) => {
               className="group relative w-full sm:w-auto px-8 py-4 bg-white text-brand-primary rounded-full font-semibold text-sm tracking-wide overflow-hidden transition-all hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:scale-105 cursor-pointer"
             >
               <span className="relative z-10 flex items-center justify-center gap-2">
-                Agendar Primera Sesión
+                {t.hero.cta_primary}
                 <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </span>
             </button>
@@ -62,7 +64,7 @@ const Hero: React.FC<HeroProps> = ({ onStartConsultation }) => {
               onClick={(e) => handleNavigation(e, 'services')}
               className="w-full sm:w-auto px-8 py-4 text-white font-medium text-sm tracking-wide border border-white/20 rounded-full hover:bg-white/10 hover:border-white/40 transition-all backdrop-blur-sm cursor-pointer"
             >
-              Cómo ayudamos
+              {t.hero.cta_secondary}
             </button>
           </div>
         </div>

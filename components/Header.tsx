@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ArrowRight } from 'lucide-react';
+import { Menu, X, ArrowRight, Globe } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface HeaderProps {
   onStartConsultation: () => void;
 }
 
 const Header: React.FC<HeaderProps> = ({ onStartConsultation }) => {
+  const { t, language, setLanguage } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -16,6 +18,11 @@ const Header: React.FC<HeaderProps> = ({ onStartConsultation }) => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const toggleLanguage = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setLanguage(language === 'es' ? 'en' : 'es');
+  };
 
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
@@ -45,9 +52,9 @@ const Header: React.FC<HeaderProps> = ({ onStartConsultation }) => {
   };
 
   const navLinks = [
-    { name: 'Nosotros', href: '#about' },
-    { name: 'Servicios', href: '#services' },
-    { name: 'Metodología', href: '#methodology' },
+    { name: t.nav.about, href: '#about' },
+    { name: t.nav.services, href: '#services' },
+    { name: t.nav.methodology, href: '#methodology' },
   ];
 
   return (
@@ -58,7 +65,6 @@ const Header: React.FC<HeaderProps> = ({ onStartConsultation }) => {
           : 'bg-transparent py-4 md:py-8'
       }`}
     >
-      {/* Ajuste de padding lateral para móvil (px-5) vs desktop */}
       <div className="container mx-auto px-5 md:px-6 lg:px-12 flex justify-between items-center">
         {/* Text Logo */}
         <a 
@@ -76,7 +82,7 @@ const Header: React.FC<HeaderProps> = ({ onStartConsultation }) => {
         </a>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-4 lg:gap-10">
+        <nav className="hidden md:flex items-center gap-4 lg:gap-8">
           <div className="flex gap-4 lg:gap-8">
             {navLinks.map((link) => (
               <a 
@@ -93,6 +99,20 @@ const Header: React.FC<HeaderProps> = ({ onStartConsultation }) => {
               </a>
             ))}
           </div>
+
+          {/* Language Toggle */}
+          <button
+            onClick={toggleLanguage}
+            className={`flex items-center gap-1.5 text-xs font-semibold px-2 py-1 rounded transition-colors ${
+              isScrolled 
+                ? 'text-brand-primary hover:bg-brand-accent/20' 
+                : 'text-white hover:bg-white/10'
+            }`}
+          >
+            <Globe size={14} />
+            <span>{language === 'es' ? 'EN' : 'ES'}</span>
+          </button>
+
           <button 
             onClick={onStartConsultation}
             className={`px-4 lg:px-6 py-2.5 rounded-full text-xs lg:text-sm font-semibold transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 border flex items-center gap-2 whitespace-nowrap ${
@@ -101,7 +121,7 @@ const Header: React.FC<HeaderProps> = ({ onStartConsultation }) => {
                 : 'bg-white text-brand-primary border-white hover:bg-brand-accent hover:border-brand-accent'
             }`}
           >
-            Agendar Primera Sesión
+            {t.nav.cta}
             <ArrowRight size={14} />
           </button>
         </nav>
@@ -131,7 +151,16 @@ const Header: React.FC<HeaderProps> = ({ onStartConsultation }) => {
               {link.name}
             </a>
           ))}
-          <div className="h-8"></div>
+          
+          <button 
+            onClick={toggleLanguage}
+            className="text-brand-primary font-medium flex items-center justify-center gap-2 py-2"
+          >
+            <Globe size={18} />
+            {language === 'es' ? 'Switch to English' : 'Cambiar a Español'}
+          </button>
+
+          <div className="h-4"></div>
           <button 
             onClick={() => {
               onStartConsultation();
@@ -139,7 +168,7 @@ const Header: React.FC<HeaderProps> = ({ onStartConsultation }) => {
             }}
             className="bg-brand-primary text-white text-center py-4 rounded-xl font-bold text-lg hover:bg-brand-secondary w-full flex items-center justify-center gap-2 shadow-xl shadow-brand-primary/20"
           >
-            Agendar Primera Sesión
+            {t.nav.cta}
             <ArrowRight size={20} />
           </button>
         </div>
