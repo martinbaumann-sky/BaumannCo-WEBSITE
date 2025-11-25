@@ -129,6 +129,68 @@ const translations = {
         text_3: "Según tus respuestas, parece que tu rol actual no calza con nuestro modelo de intervención directa con tomadores de decisión final.",
         btn: "Volver al inicio"
       }
+    },
+    legal_pages: {
+      privacy: {
+        title: "Aviso de Privacidad",
+        content: `En Baumann&Co, la confidencialidad de nuestros clientes es el pilar de nuestra operación. Entendemos que la información estratégica, financiera y operativa que comparte con nosotros es el activo más valioso de su organización.
+
+1. Recolección de Información
+Recopilamos únicamente la información necesaria para evaluar la viabilidad de una colaboración estratégica y para la ejecución de nuestros servicios de consultoría. Esto incluye datos de contacto, métricas financieras generales y desafíos operativos.
+
+2. Uso de la Información
+La información proporcionada se utiliza exclusivamente para:
+- Diagnosticar la situación actual de su empresa.
+- Evaluar el ajuste entre sus necesidades y nuestros servicios.
+- Ejecutar los servicios de consultoría contratados.
+- Comunicaciones directas sobre su proyecto.
+
+3. Protección de Datos
+Implementamos estándares de seguridad rigurosos para proteger sus datos contra acceso no autorizado, alteración o divulgación. No vendemos, alquilamos ni compartimos su información con terceros sin su consentimiento explícito, salvo obligación legal.
+
+4. Retención
+Mantenemos su información solo el tiempo necesario para cumplir con los propósitos descritos o según lo requiera la ley.
+
+Para ejercer sus derechos de acceso, rectificación o eliminación de datos, contacte directamente a contacto@baumann-co.com.`
+      },
+      terms: {
+        title: "Términos y Condiciones",
+        content: `Bienvenido a Baumann&Co. Al acceder a nuestros servicios y sitio web, usted acepta los siguientes términos y condiciones de uso.
+
+1. Naturaleza de los Servicios
+Baumann&Co ofrece servicios de consultoría estratégica y de gestión. La información proporcionada en este sitio web es de carácter informativo y no constituye asesoramiento legal o financiero vinculante hasta la firma de un contrato de servicios formal.
+
+2. Propiedad Intelectual
+Todo el contenido, metodología, logotipos y material presentado en este sitio son propiedad exclusiva de Baumann&Co. Está prohibida su reproducción, distribución o uso comercial sin autorización escrita.
+
+3. Limitación de Responsabilidad
+Baumann&Co trabaja para asegurar la precisión de la información presentada, pero no garantiza resultados específicos, ya que el éxito de la implementación estratégica depende también de la ejecución por parte del cliente.
+
+4. Modificaciones
+Nos reservamos el derecho de modificar estos términos en cualquier momento. El uso continuo de nuestros servicios implica la aceptación de dichos cambios.
+
+5. Jurisdicción
+Estos términos se rigen por las leyes de la República de Chile. Cualquier disputa será resuelta en los tribunales de Santiago.`
+      },
+      ethics: {
+        title: "Código de Ética",
+        content: `Nuestro Código de Ética define los principios innegociables que guían cada interacción y proyecto en Baumann&Co.
+
+1. Integridad Absoluta
+Actuamos con honestidad y transparencia en todas nuestras recomendaciones. Si creemos que no podemos aportar valor real a un cliente, lo comunicaremos abiertamente antes de iniciar cualquier compromiso.
+
+2. Confidencialidad Estricta
+Tratamos toda la información del cliente con el máximo nivel de reserva. Firmamos acuerdos de confidencialidad (NDA) y garantizamos que los datos sensibles nunca sean expuestos.
+
+3. Objetividad e Independencia
+Nuestras recomendaciones se basan en análisis rigurosos y hechos, no en intereses personales o de terceros. Mantenemos nuestra independencia de criterio en todo momento.
+
+4. Competencia Profesional
+Solo aceptamos proyectos para los cuales estamos calificados. Nos comprometemos al desarrollo profesional continuo para ofrecer soluciones de vanguardia.
+
+5. Respeto
+Fomentamos un ambiente de respeto mutuo con nuestros clientes, colaboradores y proveedores, valorando la diversidad de pensamiento y experiencia.`
+      }
     }
   },
   en: {
@@ -250,6 +312,68 @@ const translations = {
         text_2: "on structure and integral management issues.",
         text_3: "Based on your answers, it seems your current role does not fit our direct intervention model with final decision-makers.",
         btn: "Back to Home"
+      }
+    },
+    legal_pages: {
+      privacy: {
+        title: "Privacy Policy",
+        content: `At Baumann&Co, client confidentiality is the pillar of our operation. We understand that the strategic, financial, and operational information you share with us is your organization's most valuable asset.
+
+1. Information Collection
+We collect only the information necessary to evaluate the feasibility of a strategic partnership and for the execution of our consulting services. This includes contact details, general financial metrics, and operational challenges.
+
+2. Use of Information
+The information provided is used exclusively to:
+- Diagnose your company's current situation.
+- Evaluate the fit between your needs and our services.
+- Execute the contracted consulting services.
+- Direct communications regarding your project.
+
+3. Data Protection
+We implement rigorous security standards to protect your data against unauthorized access, alteration, or disclosure. We do not sell, rent, or share your information with third parties without your explicit consent, unless legally required.
+
+4. Retention
+We retain your information only as long as necessary to fulfill the described purposes or as required by law.
+
+To exercise your rights of access, rectification, or deletion of data, please contact contacto@baumann-co.com directly.`
+      },
+      terms: {
+        title: "Terms and Conditions",
+        content: `Welcome to Baumann&Co. By accessing our services and website, you agree to the following terms and conditions of use.
+
+1. Nature of Services
+Baumann&Co offers strategic and management consulting services. The information provided on this website is for informational purposes and does not constitute binding legal or financial advice until a formal service contract is signed.
+
+2. Intellectual Property
+All content, methodology, logos, and material presented on this site are the exclusive property of Baumann&Co. Reproduction, distribution, or commercial use without written authorization is prohibited.
+
+3. Limitation of Liability
+Baumann&Co works to ensure the accuracy of the information presented but does not guarantee specific results, as the success of strategic implementation also depends on execution by the client.
+
+4. Modifications
+We reserve the right to modify these terms at any time. Continued use of our services implies acceptance of such changes.
+
+5. Jurisdiction
+These terms are governed by the laws of the Republic of Chile. Any dispute will be resolved in the courts of Santiago.`
+      },
+      ethics: {
+        title: "Code of Ethics",
+        content: `Our Code of Ethics defines the non-negotiable principles that guide every interaction and project at Baumann&Co.
+
+1. Absolute Integrity
+We act with honesty and transparency in all our recommendations. If we believe we cannot provide real value to a client, we will communicate this openly before initiating any engagement.
+
+2. Strict Confidentiality
+We treat all client information with the highest level of privacy. We sign non-disclosure agreements (NDAs) and guarantee that sensitive data is never exposed.
+
+3. Objectivity and Independence
+Our recommendations are based on rigorous analysis and facts, not on personal or third-party interests. We maintain our independent judgment at all times.
+
+4. Professional Competence
+We only accept projects for which we are qualified. We are committed to continuous professional development to offer cutting-edge solutions.
+
+5. Respect
+We foster an environment of mutual respect with our clients, collaborators, and suppliers, valuing diversity of thought and experience.`
       }
     }
   }

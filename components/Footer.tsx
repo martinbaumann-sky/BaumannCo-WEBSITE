@@ -2,17 +2,18 @@ import React from 'react';
 import { Mail, MapPin } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
-const Footer: React.FC = () => {
+interface FooterProps {
+  onNavigate?: (view: 'privacy' | 'terms' | 'ethics') => void;
+}
+
+const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   const { t } = useLanguage();
 
-  const scrollToContact = (e: React.MouseEvent) => {
+  const handleLegalClick = (e: React.MouseEvent, view: 'privacy' | 'terms' | 'ethics') => {
     e.preventDefault();
-    const element = document.getElementById('contact');
-    if (element) {
-      const headerOffset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.scrollY - headerOffset;
-      window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+    if (onNavigate) {
+      onNavigate(view);
+      window.scrollTo(0, 0);
     }
   };
 
@@ -49,9 +50,30 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-white font-bold uppercase tracking-wider text-xs mb-6">{t.footer.legal}</h3>
             <ul className="space-y-3 text-sm">
-              <li><a href="#contact" onClick={scrollToContact} className="hover:text-white transition-colors">{t.footer.privacy}</a></li>
-              <li><a href="#contact" onClick={scrollToContact} className="hover:text-white transition-colors">{t.footer.terms}</a></li>
-              <li><a href="#contact" onClick={scrollToContact} className="hover:text-white transition-colors">{t.footer.ethics}</a></li>
+              <li>
+                <button 
+                  onClick={(e) => handleLegalClick(e, 'privacy')} 
+                  className="hover:text-white transition-colors text-left"
+                >
+                  {t.footer.privacy}
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={(e) => handleLegalClick(e, 'terms')} 
+                  className="hover:text-white transition-colors text-left"
+                >
+                  {t.footer.terms}
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={(e) => handleLegalClick(e, 'ethics')} 
+                  className="hover:text-white transition-colors text-left"
+                >
+                  {t.footer.ethics}
+                </button>
+              </li>
             </ul>
           </div>
         </div>

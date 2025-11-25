@@ -6,6 +6,7 @@ import Booking from './components/Booking';
 import Footer from './components/Footer';
 import Questionnaire from './components/Questionnaire';
 import Testimonials from './components/Testimonials';
+import Legal from './components/Legal';
 import { useLanguage } from './contexts/LanguageContext';
 
 // Simple helper to render bold text from strings like "**text**"
@@ -25,15 +26,24 @@ const RenderText = ({ text }: { text: string }) => {
 
 function App() {
   const { t } = useLanguage();
-  const [currentView, setCurrentView] = useState<'home' | 'questionnaire'>('home');
+  const [currentView, setCurrentView] = useState<'home' | 'questionnaire' | 'privacy' | 'terms' | 'ethics'>('home');
 
   const handleStartConsultation = () => {
     setCurrentView('questionnaire');
     window.scrollTo(0, 0);
   };
 
+  const handleNavigate = (view: 'privacy' | 'terms' | 'ethics') => {
+    setCurrentView(view);
+    window.scrollTo(0, 0);
+  };
+
   if (currentView === 'questionnaire') {
     return <Questionnaire onBack={() => setCurrentView('home')} />;
+  }
+
+  if (currentView === 'privacy' || currentView === 'terms' || currentView === 'ethics') {
+    return <Legal type={currentView} onBack={() => setCurrentView('home')} />;
   }
 
   return (
@@ -53,8 +63,8 @@ function App() {
                  <img 
                   src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1632&q=80" 
                   alt="Modern corporate architecture" 
-                  loading="lazy"
                   className="relative z-10 rounded-2xl shadow-2xl grayscale hover:grayscale-0 transition-all duration-700 ease-in-out w-full object-cover aspect-[4/3]"
+                  loading="lazy"
                  />
                  <div className="absolute -bottom-6 -right-6 bg-white p-6 rounded-xl shadow-xl z-20 max-w-xs hidden md:block border border-brand-accent/20">
                     <p className="font-serif text-xl text-brand-primary mb-1">{t.about.location}</p>
@@ -68,10 +78,18 @@ function App() {
                    {t.about.title_1} <br/><span className="italic text-brand-grey/70">{t.about.title_2}</span>
                  </h2>
                  <div className="space-y-6 text-lg text-brand-grey font-light leading-relaxed">
-                   <p><RenderText text={t.about.p1} /></p>
-                   <p><RenderText text={t.about.p2} /></p>
-                   <p><RenderText text={t.about.p3} /></p>
-                   <p><RenderText text={t.about.p4} /></p>
+                   <p>
+                     <RenderText text={t.about.p1} />
+                   </p>
+                   <p>
+                     <RenderText text={t.about.p2} />
+                   </p>
+                   <p>
+                     <RenderText text={t.about.p3} />
+                   </p>
+                   <p>
+                     <RenderText text={t.about.p4} />
+                   </p>
                  </div>
                </div>
              </div>
@@ -115,7 +133,7 @@ function App() {
         
         <Booking onStartConsultation={handleStartConsultation} />
       </main>
-      <Footer />
+      <Footer onNavigate={handleNavigate} />
     </div>
   );
 }
