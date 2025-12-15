@@ -69,14 +69,20 @@ const Header: React.FC<HeaderProps> = ({ onStartConsultation }) => {
     { name: t.nav.methodology, href: '#methodology' },
   ];
 
+  // Determine header classes based on state
+  // CRITICAL FIX: when menu is open, use solid bg and NO backdrop-blur to prevent fixed overlay clipping
+  const headerBaseClasses = "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out";
+  const headerStateClasses = isMobileMenuOpen 
+    ? "bg-white" 
+    : isScrolled 
+      ? "bg-white/95 backdrop-blur-lg border-b border-brand-accent/20 shadow-sm" 
+      : "bg-transparent";
+  const headerPaddingClasses = (isScrolled || isMobileMenuOpen) 
+    ? "py-3 md:py-4" 
+    : "py-4 md:py-8";
+
   return (
-    <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out ${
-        isScrolled 
-          ? 'bg-white/95 backdrop-blur-lg border-b border-brand-accent/20 py-3 md:py-4 shadow-sm' 
-          : 'bg-transparent py-4 md:py-8'
-      }`}
-    >
+    <header className={`${headerBaseClasses} ${headerStateClasses} ${headerPaddingClasses}`}>
       <div className="container mx-auto px-5 md:px-6 lg:px-12 flex justify-between items-center">
         {/* Text Logo */}
         <a 

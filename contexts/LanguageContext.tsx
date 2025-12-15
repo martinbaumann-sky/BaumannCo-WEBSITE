@@ -28,7 +28,7 @@ const translations = {
       tag: "Sobre Nosotros",
       title_1: "¿Tu empresa crece, pero",
       title_2: "sin estructura?",
-      p1: "Baumann&Co. es una consultora especializada en **empresas medianas** que están creciendo, pero se están quedando sin estructura.",
+      p1: "Baumann&Co. es una consultora especializada en **empresas** que están creciendo, pero se están quedando sin estructura.",
       p2: "Fundada en Santiago por Manuel Baumann, acompañamos a dueños que hicieron crecer su empresa con esfuerzo propio, pero hoy se enfrentan a un negocio que depende demasiado de ellos, no tiene control claro y está perdiendo velocidad.",
       p3: "Nuestro foco es simple: ordenar la operación, clarificar la estrategia y construir los sistemas que permiten crecer sin que el dueño tenga que estar en todo.",
       p4: "Trabajamos con un enfoque directo, ejecutivo y orientado a resultados: diagnosticamos rápido, definimos el plan y lo ejecutamos **contigo y tu equipo**.",
@@ -41,7 +41,7 @@ const translations = {
       title_2: "volver a crecer.",
       subtitle: "Tu empresa creció, pero tu estructura no. Ordenamos el negocio para que el sistema trabaje, no tú.",
       cards: [
-        { title: "Decisions sin depender del dueño", desc: "Gobierno corporativo y reglas claras para operar con autonomía: roles definidos y control ejecutivo." },
+        { title: "Decisiones sin depender del dueño", desc: "Gobierno corporativo y reglas claras para operar con autonomía: roles definidos y control ejecutivo." },
         { title: "Ventas que no dependen de contactos", desc: "Transformamos la intuición en un sistema comercial predecible, medible y escalable." },
         { title: "Números claros para decidir", desc: "Tableros ejecutivos con márgenes, costos y caja real para tomar decisiones informadas." },
         { title: "Gerentes que gerencian", desc: "Desarrollamos líderes que toman decisiones, ejecutan planes y rinden cuentas." },
