@@ -1,6 +1,7 @@
 import React from 'react';
 import { Mail, MapPin } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import Logo from './Logo';
 
 interface FooterProps {
   onNavigate?: (view: 'privacy' | 'terms' | 'ethics') => void;
@@ -22,10 +23,9 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           <div className="col-span-1 md:col-span-2">
-            <div className="font-libre text-3xl text-white tracking-tight mb-6">
-              <span className="font-bold">Baumann</span>
-              <span className="font-normal opacity-80">&</span>
-              <span className="font-bold">Co.</span>
+            {/* New Logo in white for footer */}
+            <div className="mb-6">
+              <Logo className="h-10 w-auto" textColor="#ffffff" />
             </div>
             
             <p className="max-w-md mb-6 text-sm leading-relaxed">

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ArrowRight, Globe } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import Logo from './Logo';
 
 interface HeaderProps {
   onStartConsultation: () => void;
@@ -19,7 +20,6 @@ const Header: React.FC<HeaderProps> = ({ onStartConsultation }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Lock body scroll when mobile menu is open to prevent UX issues
   useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -69,8 +69,6 @@ const Header: React.FC<HeaderProps> = ({ onStartConsultation }) => {
     { name: t.nav.methodology, href: '#methodology' },
   ];
 
-  // Determine header classes based on state
-  // CRITICAL FIX: when menu is open, use solid bg and NO backdrop-blur to prevent fixed overlay clipping
   const headerBaseClasses = "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out";
   const headerStateClasses = isMobileMenuOpen 
     ? "bg-white" 
@@ -79,24 +77,21 @@ const Header: React.FC<HeaderProps> = ({ onStartConsultation }) => {
       : "bg-transparent";
   const headerPaddingClasses = (isScrolled || isMobileMenuOpen) 
     ? "py-3 md:py-4" 
-    : "py-4 md:py-8";
+    : "py-6 md:py-8";
 
   return (
     <header className={`${headerBaseClasses} ${headerStateClasses} ${headerPaddingClasses}`}>
       <div className="container mx-auto px-5 md:px-6 lg:px-12 flex justify-between items-center">
-        {/* Text Logo */}
+        {/* Logo optimizado */}
         <a 
           href="#" 
           onClick={scrollToTop}
           className="group block shrink-0 z-50 relative"
         >
-          <div className={`font-libre text-2xl md:text-3xl tracking-tight transition-colors duration-300 ${
-            isScrolled || isMobileMenuOpen ? 'text-brand-primary' : 'text-white'
-          }`}>
-            <span className="font-bold">Baumann</span>
-            <span className="font-normal opacity-90">&</span>
-            <span className="font-bold">Co.</span>
-          </div>
+          <Logo 
+            className="h-7 md:h-9 lg:h-10 transition-all duration-300"
+            textColor={isScrolled || isMobileMenuOpen ? "#1B365D" : "#ffffff"} 
+          />
         </a>
 
         {/* Desktop Nav */}
@@ -118,7 +113,6 @@ const Header: React.FC<HeaderProps> = ({ onStartConsultation }) => {
             ))}
           </div>
 
-          {/* Language Toggle */}
           <button
             onClick={toggleLanguage}
             className={`flex items-center gap-1.5 text-xs font-semibold px-2 py-1 rounded transition-colors ${
@@ -144,7 +138,6 @@ const Header: React.FC<HeaderProps> = ({ onStartConsultation }) => {
           </button>
         </nav>
 
-        {/* Mobile Menu Toggle Button */}
         <button 
           className={`md:hidden p-2 transition-colors z-50 relative focus:outline-none ${
             isScrolled || isMobileMenuOpen ? 'text-brand-primary' : 'text-white'
