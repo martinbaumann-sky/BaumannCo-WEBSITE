@@ -79,10 +79,12 @@ const Header: React.FC<HeaderProps> = ({ onStartConsultation }) => {
     ? "py-3 md:py-4" 
     : "py-6 md:py-8";
 
+  // Usamos la variante 'white' cuando estamos sobre el Hero (sin scroll y menú cerrado)
+  const logoVariant = isScrolled || isMobileMenuOpen ? 'standard' : 'white';
+
   return (
     <header className={`${headerBaseClasses} ${headerStateClasses} ${headerPaddingClasses}`}>
       <div className="container mx-auto px-5 md:px-6 lg:px-12 flex justify-between items-center">
-        {/* Logo optimizado */}
         <a 
           href="#" 
           onClick={scrollToTop}
@@ -90,11 +92,10 @@ const Header: React.FC<HeaderProps> = ({ onStartConsultation }) => {
         >
           <Logo 
             className="h-7 md:h-9 lg:h-10 transition-all duration-300"
-            textColor={isScrolled || isMobileMenuOpen ? "#1B365D" : "#ffffff"} 
+            variant={logoVariant} 
           />
         </a>
 
-        {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-4 lg:gap-8">
           <div className="flex gap-4 lg:gap-8">
             {navLinks.map((link) => (
@@ -149,7 +150,6 @@ const Header: React.FC<HeaderProps> = ({ onStartConsultation }) => {
         </button>
       </div>
 
-      {/* Mobile Menu Overlay */}
       <div 
         className={`fixed inset-0 bg-white z-40 flex flex-col pt-24 pb-8 px-6 md:hidden transition-all duration-300 ease-in-out ${
           isMobileMenuOpen ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full pointer-events-none'

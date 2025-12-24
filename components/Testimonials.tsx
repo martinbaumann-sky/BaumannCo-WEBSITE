@@ -35,11 +35,11 @@ const Testimonials: React.FC = () => {
 
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <span className="text-brand-primary/60 font-bold tracking-widest uppercase text-xs mb-4 block">
+          <div className="text-center mb-16">
+            <span className="text-brand-primary/60 font-bold tracking-widest uppercase text-xs mb-6 block">
               {t.testimonials.tag}
             </span>
-            <h3 className="text-3xl md:text-4xl font-serif text-brand-primary">
+            <h3 className="text-2xl md:text-3xl font-serif text-brand-primary leading-[1.4]">
               {t.testimonials.title} <span className="italic text-brand-grey">{t.testimonials.title_italic}</span>
             </h3>
           </div>
@@ -87,7 +87,7 @@ const Testimonials: React.FC = () => {
                 <button
                   key={idx}
                   onClick={() => setActiveIndex(idx)}
-                  className={`h-1.5 rounded-full transition-all duration-300 ${
+                  className={`h-1 rounded-full transition-all duration-300 ${
                     idx === activeIndex ? 'w-8 bg-brand-primary' : 'w-2 bg-brand-accent/40 hover:bg-brand-accent'
                   }`}
                 />

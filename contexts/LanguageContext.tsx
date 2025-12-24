@@ -11,396 +11,241 @@ interface LanguageContextType {
 const translations = {
   es: {
     nav: {
-      about: "El Problema",
-      services: "Fases",
+      about: "Diagnóstico",
+      services: "Estructura",
       methodology: "Metodología",
-      cta: "Agendar Primera Sesión"
+      cta: "Agendar Sesión"
     },
     hero: {
       tag: "Baumann&Co · Consultoría Estratégica",
-      title_1: "Orden. Rentabilidad.",
-      title_2: "Crecimiento.",
-      subtitle: "Acompañamos a dueños de empresas medianas a poner orden en su negocio, recuperar rentabilidad y crecer con control.",
-      cta_primary: "Agendar Primera Sesión",
-      cta_secondary: "Nuestra Forma de Trabajar"
+      title_1: "Ordenamos empresas para que sean",
+      title_2: "rentables y puedan crecer con control.",
+      subtitle: "Acompañamos a dueños de empresas medianas a poner orden en su negocio, recuperar rentabilidad y diseñar un crecimiento escalable.",
+      cta_primary: "Agendar Sesión Inicial",
+      cta_secondary: "Metodología"
     },
     problem: {
       tag: "El Problema",
-      title_1: "La mayoría de las empresas medianas",
-      title_2: "no tiene un problema de ventas.",
-      highlight: "Tiene un problema de desorden.",
+      title_1: "El desorden operativo",
+      title_2: "es el techo de su rentabilidad.",
+      highlight: "Muchas empresas intentan crecer antes de estar listas.",
       bullets: [
-        "Roles poco claros.",
-        "Decisiones por intuición.",
-        "Dueños atrapados en la operación."
+        "Roles difusos y duplicidad de tareas.",
+        "Decisiones basadas en intuición, no en datos.",
+        "Dueños atrapados en la resolución de urgencias."
       ],
-      result: "El resultado: se trabaja mucho, se gana poco y crecer se vuelve riesgoso."
+      result: "El resultado es una operación que consume recursos sin generar el retorno esperado."
     },
     methodology: {
-      tag: "Nuestra Forma de Trabajar",
-      title: "Tres fases consecutivas",
-      subtitle: "No creemos en soluciones rápidas ni recetas genéricas. Cada fase tiene un objetivo claro.",
+      tag: "La Secuencia",
+      title: "Un proceso lógico y calmo",
+      subtitle: "No creemos en soluciones rápidas. Seguimos una secuencia inquebrantable de tres fases.",
       steps: [
         { 
           step: "01", 
-          title: "Orden Organizacional", 
-          desc: "Ponemos estructura donde hoy hay confusión. Roles claros, responsabilidades definidas y KPI por cargo.",
-          footer: "Sin orden, nada funciona."
+          title: "Orden", 
+          desc: "Definimos una estructura clara. Roles precisos, responsabilidades asignadas y métricas de desempeño por cada cargo.",
+          footer: "Sin orden, la eficiencia es imposible."
         },
         { 
           step: "02", 
-          title: "Rentabilidad Controlada", 
-          desc: "Identificamos dónde se gana y dónde se pierde plata. Alineamos foco, incentivos y decisiones.",
-          footer: "Vender más no siempre es ganar más."
+          title: "Rentabilidad", 
+          desc: "Analizamos márgenes y costos. Alineamos los incentivos y las decisiones financieras con los objetivos reales del negocio.",
+          footer: "Vender más no es ganar más."
         },
         { 
           step: "03", 
-          title: "Crecimiento con Control", 
-          desc: "Diseñamos crecimiento absorbible por la organización, no por el esfuerzo del dueño.",
-          footer: "Crecer sin romper la empresa."
+          title: "Crecimiento", 
+          desc: "Diseñamos un modelo de expansión que la organización pueda absorber sin depender del esfuerzo extra del dueño.",
+          footer: "Crecer con control."
         }
       ]
     },
     fit: {
       is_for: {
-        title: "Para Quién Es",
+        title: "Perfil de Cliente",
         items: [
-          "Dueños y gerentes generales",
-          "Empresas medianas",
-          "Negocios que quieren crecer sin perder control"
+          "Dueños y Gerentes Generales de empresas medianas.",
+          "Negocios con estructura operativa existente.",
+          "Empresas que buscan profesionalizar su gestión."
         ]
       },
       is_not_for: {
-        title: "Para Quién No Es",
+        title: "No es para usted si busca",
         items: [
-          "Startups tempranas",
-          "Empresas sin sponsor real",
-          "Dueños que no quieren tomar decisiones difíciles"
+          "Resultados inmediatos sin cambios estructurales.",
+          "Asesoría para startups en fase temprana.",
+          "Consultoría sin involucramiento de la gerencia."
         ]
       }
     },
     booking: {
-      tag: "Conversemos",
-      title: "Si tu empresa necesita orden antes de crecer, conversemos.",
-      subtitle: "Primero entendemos el problema. Luego decidimos si tiene sentido trabajar juntos.",
+      tag: "Contacto",
+      title: "Si su empresa necesita orden antes de crecer, conversemos.",
+      subtitle: "Nuestra primera sesión sirve para entender su situación y evaluar si nuestra metodología es la adecuada para su empresa.",
       steps: [
-        { title: "Pre-evaluación", desc: "Validamos si el problema es estructural." },
-        { title: "Diagnóstico", desc: "Confirmamos si somos el socio adecuado." },
-        { title: "Reunión", desc: "Sesión de 30 min para profundizar." }
+        { title: "Evaluación", desc: "Validamos la estructura del problema." },
+        { title: "Diagnóstico", desc: "Analizamos el encaje con nuestra secuencia." },
+        { title: "Propuesta", desc: "Diseño de la hoja de ruta estratégica." }
       ],
       cta: "Agendar Primera Sesión",
-      confidential: "Datos confidenciales"
+      confidential: "Tratamiento confidencial de la información"
     },
     services: {
       tag: "Fases de Intervención",
-      title_1: "Transformamos el desorden",
-      title_2: "en un sistema rentable.",
-      subtitle: "No intervenimos solo un área; ordenamos la columna vertebral de tu negocio.",
+      title_1: "Pilares de gestión",
+      title_2: "para el control total.",
+      subtitle: "Ordenamos la columna vertebral de su negocio para asegurar resultados sostenibles.",
       cards: [
-        { title: "Decisiones con Datos", desc: "Tableros ejecutivos para dejar de decidir por intuición y empezar a decidir por márgenes." },
-        { title: "Estructura de Mando", desc: "Gobierno corporativo y roles donde cada persona sabe exactamente qué se espera de ella." },
-        { title: "Sistemas Comerciales", desc: "Ventas que no dependen de la agenda del dueño, sino de un proceso repetible." },
-        { title: "Control de Gestión", desc: "Visibilidad total sobre costos, caja y eficiencia operativa en tiempo real." },
-        { title: "Liderazgo Ejecutivo", desc: "Desarrollamos a tu equipo para que tome decisiones sin tener que preguntarte todo." },
-        { title: "Escalabilidad Real", desc: "Preparamos la operación para que el crecimiento no signifique más caos, sino más valor." }
+        { title: "Control de Gestión", desc: "Tableros de mando ejecutivos para decidir basados en márgenes reales y flujo de caja." },
+        { title: "Gobierno Corporativo", desc: "Definición de roles y órganos de decisión que liberan al dueño de la operación diaria." },
+        { title: "Procesos Comerciales", desc: "Sistemas de venta repetibles y medibles que no dependen del azar o de relaciones personales." },
+        { title: "Optimización Financiera", desc: "Visibilidad total sobre la estructura de costos y la rentabilidad por unidad de negocio." },
+        { title: "Desarrollo Directivo", desc: "Alineamiento del equipo gerencial bajo una misma lógica de resultados y eficiencia." },
+        { title: "Diseño de Escala", desc: "Preparación de la infraestructura operativa para absorber el crecimiento sin generar caos." }
       ]
     },
     testimonials: {
-      tag: "Resultados",
-      title: "Impacto real en",
-      title_italic: "negocios en marcha."
+      tag: "Testimonios",
+      title: "Experiencias en",
+      title_italic: "empresas en marcha."
     },
     footer: {
-      desc: "Consultoría estratégica para empresas que buscan orden, rentabilidad y crecimiento con control.",
+      desc: "Consultoría estratégica senior. Orden, rentabilidad y crecimiento con control.",
       contact: "Contacto",
       legal: "Legal",
-      privacy: "Aviso de Privacidad",
-      terms: "Términos y Condiciones",
-      ethics: "Código de Ética",
-      rights: "Todos los derechos reservados."
+      privacy: "Privacidad",
+      terms: "Términos",
+      ethics: "Ética",
+      rights: "Reservados todos los derechos."
     },
     questionnaire: {
-      cancel: "Cancelar",
+      cancel: "Volver",
       title: "Perfilamiento",
-      subtitle: "Validación rápida para asegurar que podemos aportar valor real a tu negocio.",
-      step1: "Perfil de Empresa",
-      step2: "Agendar Sesión",
-      mob_step: "Paso",
+      subtitle: "Breve validación para asegurar que podemos aportar valor real a su empresa.",
+      step1: "Empresa",
+      step2: "Agenda",
+      mob_step: "Fase",
       mob_of: "de",
-      final_step: "Paso Final",
-      select_time: "Selecciona tu horario",
-      step1_title: "Datos Clave",
-      step1_subtitle: "Para asegurarnos de que somos el socio correcto.",
-      role_label: "Tu Rol Actual",
-      role_ph: "Selecciona tu rol",
+      final_step: "Agenda",
+      select_time: "Seleccione un horario",
+      step1_title: "Datos de Gestión",
+      step1_subtitle: "Información necesaria para nuestra primera sesión.",
+      role_label: "Su Cargo",
+      role_ph: "Seleccione",
       roles: {
-        owner: "Dueño / Socio / CEO",
-        manager: "Gerente / Director de Área",
-        consultant: "Consultor Externo",
-        student: "Estudiante / Investigación"
+        owner: "Dueño / CEO",
+        manager: "Gerente General / Director",
+        consultant: "Consultor",
+        student: "Otros"
       },
-      rev_label: "Ventas Anuales (Aprox USD)",
+      rev_label: "Ventas Anuales (USD)",
       rev_opts: {
-        l500: "< USD 500k",
-        m500: "USD 500k - 1M",
-        m1: "USD 1M - 10M",
-        m10: "> USD 10M"
+        l500: "< 500k",
+        m500: "500k - 1M",
+        m1: "1M - 10M",
+        m10: "> 10M"
       },
-      emp_label: "Tamaño del equipo",
-      emp_ph: "Selecciona",
+      emp_label: "Tamaño del Equipo",
+      emp_ph: "Seleccione",
       emp_opts: {
-        o1: "1 - 10 personas",
-        o11: "11 - 50 personas",
-        o51: "51 - 200 personas",
-        o200: "+200 personas"
+        o1: "1 - 10",
+        o11: "11 - 50",
+        o51: "51 - 200",
+        o200: "+200"
       },
-      btn_next: "Ver disponibilidad",
+      btn_next: "Ver Disponibilidad",
       disqualify: {
-        title: "No somos el socio adecuado hoy",
-        text_1: "Muchas gracias por tu interés. En Baumann&Co nos enfocamos exclusivamente en trabajar directamente con",
+        title: "Nuestra especialidad es distinta",
+        text_1: "Agradecemos su interés. En Baumann&Co nos enfocamos exclusivamente en",
         text_bold: "dueños y gerentes generales",
-        text_2: "de empresas con estructura operando.",
-        text_3: "Según tus respuestas, no parecemos ser el 'fit' ideal para tu situación actual.",
-        btn: "Volver al inicio"
-      }
-    },
-    legal_pages: {
-      privacy: {
-        title: "Aviso de Privacidad",
-        content: `En Baumann&Co, la confidencialidad de nuestros clientes es el pilar de nuestra operación. Entendemos que la información estratégica, financiera y operativa que comparte con nosotros es el activo más valioso de su organización.
-
-1. Recolección de Información
-Recopilamos únicamente la información necesaria para evaluar la viabilidad de una colaboración estratégica y para la ejecución de nuestros servicios de consultoría.
-
-2. Uso de la Información
-La información proporcionada se utiliza exclusivamente para diagnosticar la situación actual de su empresa y evaluar el ajuste entre sus necesidades y nuestros servicios.
-
-3. Protección de Datos
-Implementamos estándares de seguridad rigurosos para proteger sus datos contra acceso no autorizado. No vendemos ni compartimos su información con terceros sin su consentimiento.`
-      },
-      terms: {
-        title: "Términos y Condiciones",
-        content: `Bienvenido a Baumann&Co. Al acceder a nuestros servicios y sitio web, usted acepta los siguientes términos y condiciones de uso.
-
-1. Naturaleza de los Servicios
-Baumann&Co ofrece servicios de consultoría estratégica y de gestión. La información proporcionada en este sitio web es de carácter informativo.
-
-2. Propiedad Intelectual
-Todo el contenido, metodología, logotipos y material presentado en este sitio son propiedad exclusiva de Baumann&Co.
-
-3. Jurisdicción
-Estos términos se rigen por las leyes de la República de Chile.`
-      },
-      ethics: {
-        title: "Código de Ética",
-        content: `Nuestro Código de Ética define los principios innegociables que guían cada interacción en Baumann&Co.
-
-1. Integridad Absoluta
-Actuamos con honestidad y transparencia. Si creemos que no podemos aportar valor real, lo comunicaremos abiertamente.
-
-2. Confidencialidad Estricta
-Tratamos toda la información del cliente con el máximo nivel de reserva.
-
-3. Objetividad e Independencia
-Nuestras recomendaciones se basan en análisis rigurosos y hechos.`
+        text_2: "de empresas medianas con estructura operativa.",
+        text_3: "Según sus respuestas, no somos el socio adecuado para su situación actual.",
+        btn: "Volver al Inicio"
       }
     }
   },
   en: {
     nav: {
-      about: "The Problem",
-      services: "Phases",
+      about: "Diagnosis",
+      services: "Structure",
       methodology: "Methodology",
-      cta: "Book First Session"
+      cta: "Book Session"
     },
     hero: {
       tag: "Baumann&Co · Strategic Consulting",
-      title_1: "Order. Profitability.",
-      title_2: "Growth.",
-      subtitle: "We support mid-sized business owners in bringing order to their business, regaining profitability, and growing with control.",
-      cta_primary: "Book First Session",
-      cta_secondary: "Our Way of Working"
+      title_1: "We order companies to make them",
+      title_2: "profitable and able to grow with control.",
+      subtitle: "We support mid-sized business owners in bringing order to their business, regaining profitability, and designing scalable growth.",
+      cta_primary: "Book Initial Session",
+      cta_secondary: "Methodology"
     },
     problem: {
       tag: "The Problem",
-      title_1: "Most mid-sized companies",
-      title_2: "don't have a sales problem.",
-      highlight: "They have a disorder problem.",
+      title_1: "Operational disorder",
+      title_2: "is the ceiling of your profitability.",
+      highlight: "Many companies try to grow before they are ready.",
       bullets: [
-        "Unclear roles.",
-        "Intuition-based decisions.",
-        "Owners trapped in operations."
+        "Fuzzy roles and duplication of tasks.",
+        "Intuition-based decisions, not data-driven.",
+        "Owners trapped in daily emergencies."
       ],
-      result: "The result: high effort, low profit, and risky growth."
+      result: "The result is an operation that consumes resources without generating the expected return."
     },
     methodology: {
-      tag: "Our Way of Working",
-      title: "Three consecutive phases",
-      subtitle: "We don't believe in quick fixes or generic recipes. Each phase has a clear objective.",
+      tag: "The Sequence",
+      title: "A logical and calm process",
+      subtitle: "We don't believe in quick fixes. We follow an unwavering sequence of three phases.",
       steps: [
         { 
           step: "01", 
-          title: "Organizational Order", 
-          desc: "We bring structure where there is currently confusion. Clear roles, defined responsibilities, and KPIs per position.",
-          footer: "Without order, nothing works."
+          title: "Order", 
+          desc: "We define a clear structure. Precise roles, assigned responsibilities, and performance metrics for each position.",
+          footer: "Without order, efficiency is impossible."
         },
         { 
           step: "02", 
-          title: "Controlled Profitability", 
-          desc: "We identify where money is gained and lost. We align focus, incentives, and decisions.",
-          footer: "Selling more isn't always earning more."
+          title: "Profitability", 
+          desc: "We analyze margins and costs. We align incentives and financial decisions with the real objectives of the business.",
+          footer: "Selling more is not earning more."
         },
         { 
           step: "03", 
-          title: "Growth with Control", 
-          desc: "We design growth absorbable by the organization, not by the owner's extra effort.",
-          footer: "Grow without breaking the company."
+          title: "Growth", 
+          desc: "We design an expansion model that the organization can absorb without depending on the owner's extra effort.",
+          footer: "Growth with control."
         }
       ]
     },
     fit: {
       is_for: {
-        title: "Who It's For",
+        title: "Client Profile",
         items: [
-          "Owners and General Managers",
-          "Mid-sized companies",
-          "Businesses wanting to grow without losing control"
+          "Owners and General Managers of mid-sized companies.",
+          "Businesses with an existing operational structure.",
+          "Companies looking to professionalize their management."
         ]
       },
       is_not_for: {
-        title: "Who It's Not For",
+        title: "Not for you if you seek",
         items: [
-          "Early-stage startups",
-          "Companies without real sponsorship",
-          "Owners unwilling to make tough decisions"
+          "Immediate results without structural changes.",
+          "Advisory for early-stage startups.",
+          "Consulting without management involvement."
         ]
       }
     },
     booking: {
-      tag: "Let's Talk",
+      tag: "Contact",
       title: "If your company needs order before growth, let's talk.",
-      subtitle: "First we understand the problem. Then we decide if it makes sense to work together.",
+      subtitle: "Our first session serves to understand your situation and evaluate if our methodology is right for your company.",
       steps: [
-        { title: "Pre-evaluation", desc: "We validate if the problem is structural." },
-        { title: "Diagnosis", desc: "We confirm if we are the right partner." },
-        { title: "Meeting", desc: "30-min session to dive deeper." }
+        { title: "Evaluation", desc: "We validate the problem structure." },
+        { title: "Diagnosis", desc: "We analyze the fit with our sequence." },
+        { title: "Proposal", desc: "Strategic roadmap design." }
       ],
-      cta: "Book First Session",
-      confidential: "Confidential data"
-    },
-    services: {
-      tag: "Intervention Phases",
-      title_1: "We transform disorder",
-      title_2: "into a profitable system.",
-      subtitle: "We don't just intervene in one area; we organize the backbone of your business.",
-      cards: [
-        { title: "Data-Driven Decisions", desc: "Executive dashboards to stop deciding by intuition and start deciding by margins." },
-        { title: "Command Structure", desc: "Corporate governance and roles where everyone knows exactly what is expected of them." },
-        { title: "Commercial Systems", desc: "Sales that don't depend on the owner's calendar, but on a repeatable process." },
-        { title: "Management Control", desc: "Total visibility on costs, cash, and operational efficiency in real-time." },
-        { title: "Executive Leadership", desc: "We develop your team to make decisions without having to ask you everything." },
-        { title: "Real Scalability", desc: "We prepare the operation so growth doesn't mean more chaos, but more value." }
-      ]
-    },
-    testimonials: {
-      tag: "Results",
-      title: "Real impact on",
-      title_italic: "running businesses."
-    },
-    footer: {
-      desc: "Strategic consulting for companies seeking order, profitability, and growth with control.",
-      contact: "Contact",
-      legal: "Legal",
-      privacy: "Privacy Policy",
-      terms: "Terms & Conditions",
-      ethics: "Code of Ethics",
-      rights: "All rights reserved."
-    },
-    questionnaire: {
-      cancel: "Cancel",
-      title: "Profiling",
-      subtitle: "Quick validation to ensure we can provide real value to your business.",
-      step1: "Company Profile",
-      step2: "Book Session",
-      mob_step: "Step",
-      mob_of: "of",
-      final_step: "Final Step",
-      select_time: "Select your time",
-      step1_title: "Key Data",
-      step1_subtitle: "To ensure we are the right partner.",
-      role_label: "Your Current Role",
-      role_ph: "Select your role",
-      roles: {
-        owner: "Owner / Partner / CEO",
-        manager: "Manager / Area Director",
-        consultant: "External Consultant",
-        student: "Student / Research"
-      },
-      rev_label: "Annual Sales (Approx USD)",
-      rev_opts: {
-        l500: "< USD 500k",
-        m500: "USD 500k - 1M",
-        m1: "USD 1M - 10M",
-        m10: "> USD 10M"
-      },
-      emp_label: "Team Size",
-      emp_ph: "Select",
-      emp_opts: {
-        o1: "1 - 10 people",
-        o11: "11 - 50 people",
-        o51: "51 - 200 people",
-        o200: "+200 people"
-      },
-      btn_next: "Check Availability",
-      disqualify: {
-        title: "We are not the right partner today",
-        text_1: "Thank you for your interest. At Baumann&Co we focus exclusively on working directly with",
-        text_bold: "owners and CEOs",
-        text_2: "of companies with an existing structure.",
-        text_3: "Based on your answers, we don't seem to be the ideal fit for your current situation.",
-        btn: "Back to Home"
-      }
-    },
-    legal_pages: {
-      privacy: {
-        title: "Privacy Policy",
-        content: `At Baumann&Co, client confidentiality is the pillar of our operation.
-
-1. Information Collection
-We collect only the information necessary to evaluate the feasibility of a strategic partnership.
-
-2. Use of Information
-The information provided is used exclusively to diagnose your company's current situation.
-
-3. Data Protection
-We implement rigorous security standards to protect your data.`
-      },
-      terms: {
-        title: "Terms and Conditions",
-        content: `Welcome to Baumann&Co. By accessing our services and website, you agree to the following terms and conditions.
-
-1. Nature of Services
-Baumann&Co offers strategic and management consulting services.
-
-2. Intellectual Property
-All content presented on this site are the exclusive property of Baumann&Co.
-
-3. Jurisdiction
-These terms are governed by the laws of the Republic of Chile.`
-      },
-      ethics: {
-        title: "Code of Ethics",
-        content: `Our Code of Ethics defines the non-negotiable principles that guide every interaction at Baumann&Co.
-
-1. Absolute Integrity
-We act with honesty and transparency in all our recommendations.
-
-2. Strict Confidentiality
-We treat all client information with the highest level of privacy.
-
-3. Objectivity and Independence
-Our recommendations are based on rigorous analysis and facts.`
-      }
+      cta: "Book Initial Session",
+      confidential: "Confidential information handling"
     }
   }
 };
@@ -420,7 +265,7 @@ export const LanguageProvider = ({ children }: { children?: ReactNode }) => {
   const value = {
     language,
     setLanguage,
-    t: translations[language]
+    t: (translations as any)[language]
   };
 
   return (

@@ -2,35 +2,38 @@ import React from 'react';
 
 interface LogoProps {
   className?: string;
-  textColor?: string;
+  variant?: 'standard' | 'white';
 }
 
-const Logo: React.FC<LogoProps> = ({ className = "h-8 md:h-10", textColor = "currentColor" }) => {
+const Logo: React.FC<LogoProps> = ({ className = "h-8 md:h-10", variant = 'standard' }) => {
+  const isWhite = variant === 'white';
+  
+  // Colores exactos extraídos de las imágenes de marca
+  const blueColor = isWhite ? "#FFFFFF" : "#1B365D";
+  const grayColor = isWhite ? "#FFFFFF" : "#53565A";
+
   return (
-    <div className={`flex items-center gap-2 md:gap-3 leading-none ${className}`}>
-      {/* Isotipo: Las 3 barras azules escalonadas */}
+    <div className={`flex items-center gap-3 leading-none ${className}`}>
+      {/* Isotipo: Tres barras escalonadas alineadas a la derecha */}
       <svg 
         viewBox="0 0 140 100" 
-        className="h-[80%] w-auto flex-shrink-0"
+        className="h-[60%] w-auto flex-shrink-0"
         fill="none" 
         xmlns="http://www.w3.org/2000/svg"
       >
-        <rect x="0" y="66" width="48" height="15" rx="3" fill="#3B82F6" />
-        <rect x="22" y="37" width="68" height="15" rx="3" fill="#3B82F6" />
-        <rect x="52" y="8" width="88" height="15" rx="3" fill="#3B82F6" />
+        {/* Barra superior (Corta) */}
+        <rect x="90" y="10" width="45" height="18" rx="2" fill={blueColor} />
+        {/* Barra media (Media) */}
+        <rect x="50" y="41" width="85" height="18" rx="2" fill={blueColor} />
+        {/* Barra inferior (Larga) */}
+        <rect x="10" y="72" width="125" height="18" rx="2" fill={blueColor} />
       </svg>
       
-      {/* Texto en tipografía Inter */}
-      <span 
-        className="font-sans font-semibold tracking-tighter whitespace-nowrap"
-        style={{ 
-          color: textColor,
-          fontSize: 'clamp(1rem, 2.5vw, 1.8rem)',
-          lineHeight: '1'
-        }}
-      >
-        BAUMANN&CO.
-      </span>
+      {/* Texto: Baumann (Azul) + &Co. (Gris) */}
+      <div className="font-serif font-bold tracking-tight whitespace-nowrap flex items-baseline">
+        <span style={{ color: blueColor, fontSize: 'clamp(1.1rem, 2.5vw, 1.8rem)' }}>Baumann</span>
+        <span style={{ color: grayColor, fontSize: 'clamp(0.9rem, 2vw, 1.5rem)', marginLeft: '2px' }}>&Co.</span>
+      </div>
     </div>
   );
 };

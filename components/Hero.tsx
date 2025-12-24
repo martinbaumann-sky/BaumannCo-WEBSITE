@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowDown, ChevronRight } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 interface HeroProps {
@@ -21,63 +21,54 @@ const Hero: React.FC<HeroProps> = ({ onStartConsultation }) => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-brand-primary">
-      {/* Parallax Background */}
+    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-brand-primary">
+      {/* Background calm */}
       <div 
-        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat md:bg-fixed transform scale-105 opacity-50 mix-blend-overlay"
+        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-30 grayscale"
         style={{ 
-          backgroundImage: 'url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop")',
+          backgroundImage: 'url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop")',
         }}
       ></div>
-      <div className="absolute inset-0 bg-gradient-to-b from-brand-primary/80 via-brand-primary/40 to-brand-primary"></div>
+      <div className="absolute inset-0 bg-brand-primary/60"></div>
 
-      <div className="relative z-10 container mx-auto px-6 pt-24 md:pt-0">
-        <div className="max-w-5xl mx-auto text-center">
+      <div className="relative z-10 container mx-auto px-6">
+        <div className="max-w-4xl">
           
-          <div className="inline-block mb-6 animate-[fadeInUp_1s_ease-out_0.2s_both]">
-            <span className="px-4 py-1.5 rounded-full border border-brand-accent/30 bg-brand-accent/10 backdrop-blur-sm text-brand-accent text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase">
+          <div className="inline-block mb-8 animate-fade-in">
+            <span className="text-brand-accent text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase border-b border-brand-accent/30 pb-1">
               {t.hero.tag}
             </span>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-serif font-medium text-white leading-[1.15] mb-6 md:mb-8 tracking-tight animate-[fadeInUp_1s_ease-out_0.4s_both]">
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-serif text-white leading-[1.3] mb-10 animate-[fadeInUp_0.8s_ease-out_0.2s_both]">
             {t.hero.title_1} <br />
-            <span className="italic font-normal text-brand-accent/90">{t.hero.title_2}</span>
+            <span className="italic font-normal text-brand-accent/80">{t.hero.title_2}</span>
           </h1>
           
-          <p className="text-brand-accent/80 text-base md:text-xl font-light max-w-2xl mx-auto mb-10 md:mb-12 leading-relaxed animate-[fadeInUp_1s_ease-out_0.6s_both] px-4">
+          <p className="text-brand-accent/70 text-base md:text-lg font-light max-w-2xl mb-12 leading-relaxed animate-[fadeInUp_0.8s_ease-out_0.4s_both]">
             {t.hero.subtitle}
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-[fadeInUp_1s_ease-out_0.8s_both] w-full px-6">
+          <div className="flex flex-col sm:flex-row gap-6 animate-[fadeInUp_0.8s_ease-out_0.6s_both]">
             <button 
               onClick={onStartConsultation}
-              className="group relative w-full sm:w-auto px-8 py-4 bg-white text-brand-primary rounded-full font-semibold text-sm tracking-wide overflow-hidden transition-all hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:scale-105 cursor-pointer"
+              className="px-10 py-5 bg-white text-brand-primary rounded-none font-bold text-xs tracking-widest uppercase transition-all hover:bg-brand-accent cursor-pointer"
             >
-              <span className="relative z-10 flex items-center justify-center gap-2">
+              <span className="flex items-center gap-3">
                 {t.hero.cta_primary}
-                <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                <ChevronRight size={14} />
               </span>
             </button>
             
             <button 
-              onClick={(e) => handleNavigation(e, 'services')}
-              className="w-full sm:w-auto px-8 py-4 text-white font-medium text-sm tracking-wide border border-white/20 rounded-full hover:bg-white/10 hover:border-white/40 transition-all backdrop-blur-sm cursor-pointer"
+              onClick={(e) => handleNavigation(e, 'methodology')}
+              className="px-10 py-5 text-white font-bold text-xs tracking-widest uppercase border border-white/20 hover:bg-white/5 transition-all cursor-pointer"
             >
               {t.hero.cta_secondary}
             </button>
           </div>
         </div>
       </div>
-      
-      {/* Scroll Indicator */}
-      <button 
-        onClick={(e) => handleNavigation(e, 'about')}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-brand-accent/50 hover:text-white transition-colors animate-bounce cursor-pointer z-20 hidden md:block"
-        aria-label="Scroll down"
-      >
-        <ArrowDown size={24} strokeWidth={1} />
-      </button>
     </section>
   );
 };

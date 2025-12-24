@@ -23,9 +23,8 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           <div className="col-span-1 md:col-span-2">
-            {/* New Logo in white for footer */}
             <div className="mb-6">
-              <Logo className="h-10 w-auto" textColor="#ffffff" />
+              <Logo className="h-10 w-auto" variant="white" />
             </div>
             
             <p className="max-w-md mb-6 text-sm leading-relaxed">

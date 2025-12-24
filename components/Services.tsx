@@ -15,46 +15,42 @@ const Services: React.FC = () => {
     }
   };
 
-  const icons = [Gavel, TrendingUp, Layers, Users, ShieldCheck, BarChart3];
+  const icons = [BarChart3, Gavel, TrendingUp, ShieldCheck, Users, Layers];
 
   return (
-    <section id="services" className="py-16 md:py-20 bg-brand-accent/5 relative">
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-brand-accent/50 to-transparent"></div>
-
+    <section id="services" className="py-24 bg-white">
       <div className="container mx-auto px-6 md:px-12">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-10 md:mb-12 gap-6 md:gap-8">
-          <div className="max-w-2xl">
-            <span className="text-brand-primary font-bold tracking-widest uppercase text-xs mb-3 md:mb-4 block opacity-80">
-              {t.services.tag}
-            </span>
-            <h3 className="text-3xl md:text-4xl lg:text-5xl font-serif text-brand-primary leading-tight">
-              {t.services.title_1} <br/>
-              <span className="italic text-brand-grey font-light">{t.services.title_2}</span>
-            </h3>
-          </div>
-          <p className="text-brand-grey text-base md:text-lg max-w-md leading-relaxed">
+        <div className="max-w-3xl mb-20">
+          <span className="text-brand-primary font-bold tracking-widest uppercase text-xs mb-6 block">
+            {t.services.tag}
+          </span>
+          <h3 className="text-3xl md:text-4xl font-serif text-brand-primary leading-[1.4] mb-8">
+            {t.services.title_1} <br/>
+            <span className="italic text-brand-grey/60 font-light">{t.services.title_2}</span>
+          </h3>
+          <p className="text-brand-grey text-lg max-w-xl font-light leading-relaxed">
              {t.services.subtitle}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border-t border-l border-brand-accent/20">
           {t.services.cards.map((service: any, index: number) => {
             const Icon = icons[index];
             return (
               <button 
                 key={index}
                 onClick={handleServiceClick}
-                className="group bg-white p-6 md:p-8 rounded-2xl border border-brand-accent/30 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_40px_-15px_rgba(27,54,93,0.1)] hover:-translate-y-1 transition-all duration-500 ease-out hover:border-brand-primary/30 text-left cursor-pointer w-full active:scale-[0.98]"
+                className="group p-10 md:p-12 border-r border-b border-brand-accent/20 text-left cursor-pointer transition-all hover:bg-brand-accent/10"
               >
-                <div className="flex justify-between items-start mb-6">
-                  <div className="w-12 h-12 bg-brand-accent/20 rounded-xl flex items-center justify-center text-brand-primary group-hover:bg-brand-primary group-hover:text-white transition-colors duration-500">
-                    <Icon size={24} strokeWidth={1.5} />
+                <div className="flex justify-between items-start mb-8">
+                  <div className="text-brand-primary group-hover:scale-110 transition-transform duration-500">
+                    <Icon size={28} strokeWidth={1} />
                   </div>
-                  <ArrowUpRight className="text-brand-accent group-hover:text-brand-primary transition-colors" size={20} />
+                  <ArrowUpRight className="text-brand-accent/40 group-hover:text-brand-primary transition-colors" size={18} />
                 </div>
                 
-                <h4 className="text-lg md:text-xl font-semibold text-brand-primary mb-2 group-hover:text-brand-secondary transition-colors">{service.title}</h4>
-                <p className="text-brand-grey leading-relaxed text-sm">
+                <h4 className="text-xl font-serif text-brand-primary mb-4">{service.title}</h4>
+                <p className="text-brand-grey font-light leading-relaxed text-sm">
                   {service.desc}
                 </p>
               </button>

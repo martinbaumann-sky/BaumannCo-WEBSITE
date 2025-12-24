@@ -7,84 +7,45 @@
     <!-- Primary Meta Tags -->
     <title>Baumann&Co | Consultoría Estratégica para Empresas Medianas</title>
     <meta name="title" content="Baumann&Co | Consultoría Estratégica para Empresas Medianas" />
-    <meta name="description" content="Consultora especializada en dueños de empresas medianas en LatAm. Ordenamos la estructura, profesionalizamos la gestión y aceleramos el crecimiento sin depender del dueño." />
-    <meta name="keywords" content="consultoría estratégica, empresas medianas, gobierno corporativo, control de gestión, profesionalización empresas familiares, Chile, LatAm" />
-    <meta name="author" content="Baumann&Co" />
-    <meta name="robots" content="index, follow" />
+    <meta name="description" content="Ordenamos empresas para que sean rentables y puedan crecer con control. Consultoría especializada para dueños y gerentes." />
 
-    <!-- Open Graph / Facebook / WhatsApp / LinkedIn -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.baumann-co.com/" />
-    <meta property="og:title" content="Baumann&Co | Estrategia Clara. Crecimiento Real." />
-    <meta property="og:description" content="Ayudamos a dueños de empresas a recuperar el control y crecer con estructura. Diagnóstico, Orden y Crecimiento." />
-    <meta property="og:image" content="https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" />
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://www.baumann-co.com/" />
-    <meta property="twitter:title" content="Baumann&Co | Consultoría Estratégica" />
-    <meta property="twitter:description" content="Ordena tu empresa para que vuelva a crecer. Consultoría especializada para dueños y gerentes generales." />
-    <meta property="twitter:image" content="https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" />
-
-    <!-- Geo Tags -->
-    <meta name="geo.region" content="CL-RM" />
-    <meta name="geo.placename" content="Santiago" />
-    <meta name="geo.position" content="-33.44889;-70.669265" />
-    <meta name="ICBM" content="-33.44889, -70.669265" />
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WT58ZXSX4G"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-WT58ZXSX4G');
-    </script>
-
-    <!-- Updated Favicon: Matching the new logo bars -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect x=%2210%22 y=%2270%22 width=%2230%22 height=%2210%22 rx=%222%22 fill=%22%233B82F6%22/><rect x=%2230%22 y=%2245%22 width=%2245%22 height=%2210%22 rx=%222%22 fill=%22%233B82F6%22/><rect x=%2250%22 y=%2220%22 width=%2260%22 height=%2210%22 rx=%222%22 fill=%22%233B82F6%22/></svg>" />
+    <!-- Favicon: Isotipo corregido (derecha-alineado) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 140 100%22><rect x=%2290%22 y=%2210%22 width=%2245%22 height=%2218%22 rx=%222%22 fill=%22%231B365D%22/><rect x=%2250%22 y=%2241%22 width=%2285%22 height=%2218%22 rx=%222%22 fill=%22%231B365D%22/><rect x=%2210%22 y=%2272%22 width=%22125%22 height=%2218%22 rx=%222%22 fill=%22%231B365D%22/></svg>" />
     
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
         theme: {
           extend: {
             fontFamily: {
-              sans: ['Inter', 'sans-serif'],
-              serif: ['Playfair Display', 'serif'],
-              libre: ['Libre Baskerville', 'serif'],
+              sans: ['Lato', 'sans-serif'],
+              serif: ['Libre Baskerville', 'serif'],
             },
             colors: {
               brand: {
-                primary: '#1B365D',   // Deep Blue
-                secondary: '#202A44', // Dark Navy
-                accent: '#CED9E5',    // Ice Blue
-                grey: '#53565A',      // Corporate Grey
-                blue: '#3B82F6',      // Logo Blue
-                white: '#ffffff',
+                primary: '#1B365D',   // Azul corporativo
+                secondary: '#202A44', // Azul carbón
+                accent: '#CED9E5',    // Azul claro (fondos)
+                grey: '#53565A',      // Gris tipográfico
+                blue: '#3B82F6',      // Logo Isotype Blue
+                white: '#FFFFFF',
                 black: '#000000',
               }
             },
             animation: {
-              'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
-              'fade-in': 'fadeIn 1s ease-out forwards',
-              'slide-up': 'slideUp 0.5s ease-out forwards',
-              'scroll': 'scroll 40s linear infinite',
+              'fade-in-up': 'fadeInUp 0.6s ease-out forwards',
+              'fade-in': 'fadeIn 0.8s ease-out forwards',
+              'scroll': 'scroll 60s linear infinite',
             },
             keyframes: {
               fadeInUp: {
-                '0%': { opacity: '0', transform: 'translateY(20px)' },
+                '0%': { opacity: '0', transform: 'translateY(15px)' },
                 '100%': { opacity: '1', transform: 'translateY(0)' },
               },
               fadeIn: {
                 '0%': { opacity: '0' },
                 '100%': { opacity: '1' },
-              },
-              slideUp: {
-                '0%': { transform: 'translateY(100%)', opacity: '0' },
-                '100%': { transform: 'translateY(0)', opacity: '1' },
               },
               scroll: {
                 '0%': { transform: 'translateX(0)' },
@@ -95,18 +56,22 @@
         }
       }
     </script>
-    <!-- Calendly styles -->
-    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+    <style>
+      .paper-texture {
+        background-color: #ffffff;
+        background-image: url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+      }
+    </style>
   <script type="importmap">
 {
   "imports": {
-    "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "react": "https://aistudiocdn.com/react@^19.2.0",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
-    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
-    "vite": "https://aistudiocdn.com/vite@^7.2.4",
-    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.1"
+    "@google/genai": "https://esm.sh/@google/genai@^1.34.0",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "react": "https://esm.sh/react@^19.2.3",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2",
+    "vite": "https://esm.sh/vite@^7.3.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/"
   }
 }
 </script>
