@@ -16,10 +16,10 @@ export const analyzeBusinessChallenge = async (challenge: string, companyName: s
     `;
 
     const response = await ai.models.generateContent({
-      model: "gemini-2.5-flash",
+      model: "gemini-3-flash-preview",
       contents: prompt,
       config: {
-        systemInstruction: "Eres un experto consultor corporativo. Tu tono es profesional, empático y orientado a resultados.",
+        systemInstruction: "Eres un experto consultor corporativo de la firma Baumann&Co. Tu tono es profesional, analítico y ejecutivo. Ayudas a empresas medianas a encontrar orden y rentabilidad.",
         responseMimeType: "application/json",
         responseSchema: {
           type: Type.OBJECT,
@@ -50,11 +50,10 @@ export const analyzeBusinessChallenge = async (challenge: string, companyName: s
     throw new Error("No text returned from Gemini");
   } catch (error) {
     console.error("Error analyzing challenge:", error);
-    // Fallback in case of error to ensure UI doesn't break
     return {
-      recommendedService: "Consultoría General",
-      analysis: "Hemos recibido su solicitud. Un consultor revisará su caso detalladamente.",
-      agenda: ["Revisión de objetivos", "Análisis de situación actual", "Próximos pasos"]
+      recommendedService: "Consultoría Estratégica",
+      analysis: "Hemos recibido su información. Un socio de Baumann&Co analizará su caso para proponer una hoja de ruta personalizada.",
+      agenda: ["Alineamiento de objetivos", "Revisión de estructura actual", "Identificación de cuellos de botella"]
     };
   }
 };
