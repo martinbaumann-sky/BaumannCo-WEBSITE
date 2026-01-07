@@ -1,10 +1,10 @@
+
 import React from 'react';
-import { Mail, MapPin } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import Logo from './Logo';
 
 interface FooterProps {
-  onNavigate?: (view: 'privacy' | 'terms' | 'ethics') => void;
+  onNavigate?: (view: 'privacy' | 'terms' | 'ethics' | 'home') => void;
 }
 
 const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
@@ -19,67 +19,42 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   };
 
   return (
-    <footer className="bg-brand-primary text-brand-accent/70 py-12 border-t border-white/10">
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-          <div className="col-span-1 md:col-span-2">
-            <div className="mb-6">
-              <Logo className="h-10 w-auto" variant="white" />
-            </div>
-            
-            <p className="max-w-md mb-6 text-sm leading-relaxed">
-              {t.footer.desc}
-            </p>
+    <footer className="bg-[#1B365D] text-white/70 py-16">
+      <div className="container mx-auto px-6 max-w-6xl">
+        <div className="flex flex-col items-start gap-8 mb-16">
+          <div className="mb-2">
+            <Logo className="h-10 w-auto" variant="white" />
           </div>
           
-          <div>
-            <h3 className="text-white font-bold uppercase tracking-wider text-xs mb-6">{t.footer.contact}</h3>
-            <ul className="space-y-4 text-sm">
-              <li className="flex items-start gap-3">
-                <MapPin size={18} className="text-brand-accent mt-0.5 flex-shrink-0" />
-                <span>Luis Pasteur 5280<br/>Santiago, Chile</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <Mail size={18} className="text-brand-accent flex-shrink-0" />
-                <a href="mailto:contacto@baumann-co.com" className="hover:text-white transition-colors">contacto@baumann-co.com</a>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-white font-bold uppercase tracking-wider text-xs mb-6">{t.footer.legal}</h3>
-            <ul className="space-y-3 text-sm">
-              <li>
-                <button 
-                  onClick={(e) => handleLegalClick(e, 'privacy')} 
-                  className="hover:text-white transition-colors text-left"
-                >
-                  {t.footer.privacy}
-                </button>
-              </li>
-              <li>
-                <button 
-                  onClick={(e) => handleLegalClick(e, 'terms')} 
-                  className="hover:text-white transition-colors text-left"
-                >
-                  {t.footer.terms}
-                </button>
-              </li>
-              <li>
-                <button 
-                  onClick={(e) => handleLegalClick(e, 'ethics')} 
-                  className="hover:text-white transition-colors text-left"
-                >
-                  {t.footer.ethics}
-                </button>
-              </li>
-            </ul>
-          </div>
+          <p className="max-w-xl text-lg md:text-xl font-light text-brand-accent/60">
+            {t.footer.desc}
+          </p>
         </div>
         
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-brand-accent/50">
-          <p>&copy; {new Date().getFullYear()} Baumann&Co Consulting. {t.footer.rights}</p>
-          <p className="mt-2 md:mt-0">Designed for Excellence.</p>
+        <div className="border-t border-white/10 pt-10 flex flex-col md:flex-row justify-between items-center gap-6 text-sm">
+          <div className="flex flex-wrap justify-center md:justify-start gap-6 mb-4 md:mb-0">
+             <button 
+                onClick={(e) => handleLegalClick(e, 'privacy')} 
+                className="hover:text-white transition-colors text-xs font-bold uppercase tracking-widest"
+              >
+                {t.footer.privacy}
+              </button>
+              <button 
+                onClick={(e) => handleLegalClick(e, 'terms')} 
+                className="hover:text-white transition-colors text-xs font-bold uppercase tracking-widest"
+              >
+                {t.footer.terms}
+              </button>
+              <button 
+                onClick={(e) => handleLegalClick(e, 'ethics')} 
+                className="hover:text-white transition-colors text-xs font-bold uppercase tracking-widest"
+              >
+                {t.footer.ethics}
+              </button>
+          </div>
+          <p className="text-xs text-white/40 tracking-wide font-light">
+            &copy; {new Date().getFullYear()} Baumann&Co Consulting. Baumann&Co. {t.footer.rights}
+          </p>
         </div>
       </div>
     </footer>

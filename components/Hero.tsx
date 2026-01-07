@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChevronRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 interface HeroProps {
@@ -9,62 +9,47 @@ interface HeroProps {
 const Hero: React.FC<HeroProps> = ({ onStartConsultation }) => {
   const { t } = useLanguage();
 
-  const handleNavigation = (e: React.MouseEvent, targetId: string) => {
-    e.preventDefault();
-    const element = document.getElementById(targetId);
-    if (element) {
-      const headerOffset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.scrollY - headerOffset;
-      window.scrollTo({ top: offsetPosition, behavior: "smooth" });
-    }
-  };
-
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-brand-primary">
-      {/* Background calm */}
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-brand-primary">
+      {/* Background with slight texture */}
       <div 
-        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-30 grayscale"
-        style={{ 
-          backgroundImage: 'url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop")',
-        }}
+        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-15 grayscale mix-blend-overlay"
+        style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop")' }}
       ></div>
-      <div className="absolute inset-0 bg-brand-primary/60"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-brand-secondary via-brand-primary to-brand-primary"></div>
 
-      <div className="relative z-10 container mx-auto px-6">
-        <div className="max-w-4xl">
-          
-          <div className="inline-block mb-8 animate-fade-in">
-            <span className="text-brand-accent text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase border-b border-brand-accent/30 pb-1">
-              {t.hero.tag}
-            </span>
+      <div className="relative z-10 container mx-auto px-6 text-center">
+        <div className="max-w-5xl mx-auto">
+          {/* Tagline con barras decorativas sutiles */}
+          <div className="flex flex-col items-center mb-10 animate-[fadeIn_1.5s_ease-out]">
+            <div className="flex items-center justify-center gap-4 opacity-60">
+              <div className="h-px w-12 bg-brand-accent/40"></div>
+              <span className="text-brand-accent text-xs font-bold tracking-[0.6em] uppercase">
+                Baumann & Co. · Consulting
+              </span>
+              <div className="h-px w-12 bg-brand-accent/40"></div>
+            </div>
           </div>
 
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-serif text-white leading-[1.3] mb-10 animate-[fadeInUp_0.8s_ease-out_0.2s_both]">
-            {t.hero.title_1} <br />
-            <span className="italic font-normal text-brand-accent/80">{t.hero.title_2}</span>
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-white leading-tight mb-8 animate-[fadeInUp_1s_ease-out] whitespace-nowrap">
+            {t.hero.headline}
           </h1>
           
-          <p className="text-brand-accent/70 text-base md:text-lg font-light max-w-2xl mb-12 leading-relaxed animate-[fadeInUp_0.8s_ease-out_0.4s_both]">
-            {t.hero.subtitle}
+          <p className="text-xl md:text-2xl font-serif italic text-brand-accent/90 mb-12 animate-[fadeInUp_1s_ease-out_0.2s_both] tracking-wide max-w-3xl mx-auto">
+            {t.hero.subheadline}
+          </p>
+
+          <p className="text-brand-accent/60 text-lg md:text-xl font-light max-w-2xl mx-auto mb-16 leading-relaxed animate-[fadeInUp_1s_ease-out_0.4s_both]">
+            {t.hero.description}
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-6 animate-[fadeInUp_0.8s_ease-out_0.6s_both]">
+          <div className="animate-[fadeInUp_1s_ease-out_0.6s_both]">
             <button 
               onClick={onStartConsultation}
-              className="px-10 py-5 bg-white text-brand-primary rounded-none font-bold text-xs tracking-widest uppercase transition-all hover:bg-brand-accent cursor-pointer"
+              className="px-14 py-6 bg-white text-brand-primary rounded-full font-bold text-xs tracking-widest uppercase transition-all hover:bg-brand-accent hover:-translate-y-1 shadow-2xl flex items-center gap-5 mx-auto"
             >
-              <span className="flex items-center gap-3">
-                {t.hero.cta_primary}
-                <ChevronRight size={14} />
-              </span>
-            </button>
-            
-            <button 
-              onClick={(e) => handleNavigation(e, 'methodology')}
-              className="px-10 py-5 text-white font-bold text-xs tracking-widest uppercase border border-white/20 hover:bg-white/5 transition-all cursor-pointer"
-            >
-              {t.hero.cta_secondary}
+              {t.hero.cta}
+              <ArrowRight size={16} />
             </button>
           </div>
         </div>
